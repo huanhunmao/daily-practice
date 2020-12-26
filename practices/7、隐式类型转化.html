@@ -9,13 +9,11 @@
 
 <body>
     <script>
-        // 这是一组 
+        // 这是一组   &&
         // var a = 3;
         // var b = '2';
         // var c;
         // var d = null;
-
-
         // console.log(a && d); //null
         // console.log(c); // undefined
 
@@ -23,7 +21,7 @@
         //     console.log('打印出来') // 无法打印出来
         // }
 
-        // // 第二组 
+        // // 第二组   ||
         // function foo(a, b) {
         //     a = a || 'hello';
         //     b = b || 'world';
@@ -36,17 +34,60 @@
         // // 第二个值是空的  b = b || 'world'; 不成立使用默认值 world
         // foo('That is it!', "") //That is it! world
 
-        // 第三组 
-        var s1 = Symbol('cool');
-        var s2 = String(s1); // Symbol('cool');
-        console.log(s2);
+        // 第三组  Symbol
+        // var s1 = Symbol('cool');
+        // var s2 = String(s1); // Symbol('cool');
+        // console.log(s2);
 
-        var s3 = Symbol('not cool');
-        console.log(s3); // Symbol('not cool');
-        // console.log(s3 + '') // TypeError
+        // var s3 = Symbol('not cool');
+        // console.log(s3); // Symbol('not cool');
+        // // console.log(s3 + '') // TypeError
 
-        var s4 = '123';
-        console.log(s4);
+        // var s4 = '123';
+        // console.log(s4);
+
+        // 第四组   ==
+        // var a = '42';
+        // var b = true;
+        // console.log(a == b) //false 
+        // // 为啥
+        // // true ---> 1  '42' ---> 42  1!= 42
+
+        // 第五组   == === 
+        // var a; //undefined
+        // var b = null;
+        // console.log(a == b) //true
+        // console.log(a == ''); //false
+        // console.log(b == ''); //false
+        // console.log(a == false); //false
+        // console.log(b == false) //false
+
+        // 第六组  对象和非对象 == 
+        // var a = 21;
+        // var b = [21]; //ToPrimitive 变成 '21'-->21
+        // console.log(a == b); // true
+
+        // var c = 'a';
+        // var d = Object(c); //String('a')
+        // console.log(c == d) //true
+
+        // var e = null;
+        // var f = Object(e);
+        // console.log(e == f) // false
+
+        // 第七组 特殊的
+        var a = 2;
+        if (a == 2 && a == 3) {
+            console.log('很特殊') //自然无法打印出来
+        }
+        // 但是
+        Number.prototype.valueOf = function () {
+            return a++;
+        }
+        var t = new Number() //这个Number()涉及toPrimitive 会调用valueOf()
+        if (t == 2 && t == 3) {
+            console.log('竟然执行了') //竟然执行了
+        }
     </script>
 
 
