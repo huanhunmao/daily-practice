@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = [1, 2, 3, 4, 5];
+
+    function Mirror(arr) {
+        if (arr == null) return false;
+        if (arr) {
+            var temp = arr.left;
+            arr.left = arr.right;
+            arr.right = temp;
+            Mirror(arr.left);
+            Mirror(arr.right);
+        }
+        return arr
+    }
+    var arr1 = Mirror(arr)
+    console.log(arr1)
+    var arr2 = arr.reverse()
+</script>
+
+</html>

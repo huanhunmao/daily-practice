@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // // Object 实例类型
+    // var obj1 = new Object();
+    // obj1.name = 'tes';
+    // obj1.age = 22;
+    // obj1.job = 'test';
+
+    // obj1.sayName = function () {
+    //     alert(this.job)
+    // }
+    // obj1.sayName() // 这个地方需要特别注意 上面定义的是函数
+    // // 函数 必须执行才会有结果
+
+    // 字面量类型
+    var obj2 = {
+        name: "T1",
+        age: 23,
+        job: "game",
+
+        sayJob: function () {
+            alert(this.job)
+        }
+    }
+    this.sayJob() // 一样需要注意 这个地方需要执行
+</script>
+
+</html>

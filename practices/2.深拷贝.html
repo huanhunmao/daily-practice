@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function deepClone(obj) {
+        if (typeof obj !== 'object' || obj == null) {
+            return obj
+        }
+        var result;
+        if (result instanceof Array) {
+            result = []
+        } else {
+            result = {}
+        }
+        for (let key in obj) {
+            if (obj.hasOwnProperty) {
+                result[key] = deepClone(obj[key])
+            }
+        }
+        return result
+    }
+    // 测试
+    var obj1 = {
+        a: 1,
+        b: {
+            c: 2
+        },
+        c: [1, 2, 3]
+    }
+    var obj2 = deepClone(obj1);
+    obj2.b.c = 11;
+    console.log(obj1.b.c) // 2  深拷贝成功 值类型判断时 勿忘 typeof
+    console.log(obj2.b.c) // 11
+</script>
+
+
+
+</html>

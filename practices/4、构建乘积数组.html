@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function multiply(array) {
+        var result = []
+        for (var i = 0; i < array.length; i++) {
+            var temp = 1;
+            for (var j = 0; j < array.length; j++) {
+                if (i == j) {
+                    continue
+                } else {
+                    temp *= array[j]
+                }
+            }
+            result.push(temp)
+        }
+        return result
+    }
+    var arr1 = multiply([1, 2, 3, 4, 5]);
+    console.log(arr1);
+</script>
+
+</html>

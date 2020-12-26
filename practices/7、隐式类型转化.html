@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 这是一组 
+        // var a = 3;
+        // var b = '2';
+        // var c;
+        // var d = null;
+
+
+        // console.log(a && d); //null
+        // console.log(c); // undefined
+
+        // if ((a && d) || c) {
+        //     console.log('打印出来') // 无法打印出来
+        // }
+
+        // // 第二组 
+        // function foo(a, b) {
+        //     a = a || 'hello';
+        //     b = b || 'world';
+        //     console.log(a + " " + b); // hello world
+        // }
+
+        // foo();
+        // foo('yeah', 'yeah!') //yeah yeah!
+
+        // // 第二个值是空的  b = b || 'world'; 不成立使用默认值 world
+        // foo('That is it!', "") //That is it! world
+
+        // 第三组 
+        var s1 = Symbol('cool');
+        var s2 = String(s1); // Symbol('cool');
+        console.log(s2);
+
+        var s3 = Symbol('not cool');
+        console.log(s3); // Symbol('not cool');
+        // console.log(s3 + '') // TypeError
+
+        var s4 = '123';
+        console.log(s4);
+    </script>
+
+
+</body>
+
+</html>
