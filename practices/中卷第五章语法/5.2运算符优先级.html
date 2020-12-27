@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // && || 执行顺序问题
+    // var a = 6;
+    // var b = 'cc';
+    // var c = false;
+    // var t1 = a && b || c;
+    // var t2 = a || b && c;
+    // console.log(t1); //cc  为什么？ && 优先级高于 || 
+    // console.log(t2); // 6
+
+    // 再来一个比较复杂的例子 
+    // var d = a && b || c ? c || b ? a : c && b : a;
+    // console.log(d) //6
+    /* 这个怎么理解呢 ？
+         ? : 为右组合 先算右边的部分
+        var d = a && b || c ? (c || b ? a : c && b) : a ;
+        先执行括号内的 结果为 a 
+        然后执行 var d  = a && b || c ? a : a  结果为a 也就是 6
+    */
+    //关联
+    // var t = true ? false : true ? true : true;
+    // console.log(t) // false
+    // //  ? : 是右组合
+    // // 执行顺序是 true ? false :(true ? true : true) 
+    // console.log(true ? true : true) // true
+    // console.log(true ? false : true) //false 问好前面的表达式成立 执行 问号后面表达式1 否则执行表达式2 
+
+    // 再来个 比较复杂的例子 
+    // var a = 6;
+    // var b = 'cc';
+    // var c = false;
+
+    // var t = a && b || c ? c || b ? a : c && b : a;
+    // console.log(t) // 6
+    /*
+    稍微分解一下 你就明白了 
+    var t = (a && b || c) ? ((c || b) ? a : (c && b)) : a;
+    这样写了之后 很容易 就可 得到正确答案
+    */
+
+
+    // 自动分号 ASI   ---了解
+    // var a = 2;
+    // do {
+    //     console.log(a)
+    // } while (a); //这种写法会无限循环
+</script>
+
+</html>
