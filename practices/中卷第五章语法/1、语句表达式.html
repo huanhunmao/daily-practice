@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 语句 表达式
+    // var a, b;
+    // a =
+    //     if (true) {
+    //         b = 2 + 3
+    //     }; //报错  语法不允许 将语句的结果 赋给另一个变量
+
+    // ++ 操作符
+    // var t = 3;
+    // var t1 = t++;
+    // console.log(t1)   // 3
+
+
+    // ++a++
+    // var a = 1;
+    // console.log(++a++) // 报错 先执行 a++ 不能将a++的结果值是1   ++ 不能直接在 1这种值操作
+
+    // 逗号运算符  ,
+    // var a = 6,
+    //     b;
+    // b = (a++, a);   //先执行 a++ 6  然后 执行 a  这个时候 a变成 7 因为 a++是先操作后改变的
+    // console.log(a, b)  // 7  7 
+
+    // delete  操作符 
+    // var obj = {
+    //     a: 1
+    // }
+    // var t1 = delete obj.b; //发现对象中不存在某个属性或者存在某个属性都可delete成功 返回true 原结果变成undefined
+    // console.log(t1) //true
+    // console.log(obj.b) //undefined
+    // var t2 = delete obj.a;
+    // console.log(t2) //true
+    // console.log(obj.a) //undefined
+
+
+    // 链式赋值操作  ===
+    // var a, b, c;
+    // a = b = c = 7;
+    // console.log(a, b, c)  // 7 7 7 
+
+    var c;
+    a = b = c = 7;
+    console.log(a, b, c) // 7 7 7 但此时 已经创建了2个全局变量 a,b
+</script>
+
+</html>
