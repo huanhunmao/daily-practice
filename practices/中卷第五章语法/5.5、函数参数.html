@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // TDZ 没有初始化前提前使用变量 会报错
+    // var b = 3;
+
+    // function foo(a = 6, b = a + b + 5) {
+    //     console.log(a)
+    //     console.log(b) // Cannot access 'b' before initialization
+    // }
+    // foo();
+
+    // 第二个例子
+    // function foo(a = 6, b = a + 1) {
+    //     console.log(a, b)
+    // }
+    // foo(); // 6 7
+    // foo(undefined); // 6 7  undefined 会使用默认值 这个很重要 ！！！
+    // foo(null); // null 1  a+1 中null被强制转化 0
+    // foo(5); // 5 6 
+
+    // es6 中比较特殊的情况
+    // function foo(a = 6, b = a + 1) {
+    //     console.log(arguments.length, a, b, arguments[0], arguments[1])
+    // }
+    // // 函数有默认值时 函数不带 参数时 arguments 为空
+    // foo(); // 0 6 7 undefined undefined
+    // foo(10); // 1 10 11  10 undefined
+    // foo(10, undefined); // 2 10 11 10 undefined  undefined 会使用默认值 这个很重要 ！！！
+    // foo(10, null) // 2 10 null 10 null
+
+    // 另外一个 例子 
+    // function foo(a) {
+    //     a = 6;
+    //     console.log(arguments[0])
+    // }
+    // foo(2); // 6
+    // foo(); // undefined
+
+
+    // try{...}  finally{...} 后面这个回调函数 一定会被调用 之后的代码不会执行
+    // function foo() {
+    //     try {
+    //         return 6;
+    //     } finally {
+    //         console.log('hello')
+    //     }
+    //     console.log('test') //  为什么没有执行 ？
+    //     console.log('o') // 
+    // }
+    // console.log(foo()) // hello  6
+
+    // 一种情况try{throw xxx}
+    // function foo() {
+    //     try {
+    //         throw 3;
+    //     } finally {
+    //         console.log('hello')
+    //     }
+    // }
+    // console.log(foo()) // finally 里面的内容会保持 hello 报错Uncaught 3
+
+    // 另外一种情况
+    // function foo() {
+    //     try {
+    //         return 3;
+    //     } finally {
+    //         throw 'error!'
+    //     }
+    // }
+    // console.log(foo()) // 报错 Uncaught error!  try里面的内容会丢掉
+
+    // finally 中的return 会覆盖前面 try里的return 
+    // function foo() {
+    //     try {
+    //         return 3;
+    //     } finally {
+    //         return 666 // 这个地方 单写 return 结果打印 undefined 
+    //         // 这个地方 连 return 都不写 返回 try里面的设定值
+    //     }
+    // }
+    // console.log(foo()) //666
+
+
+    // switch(){ case}
+    // var a;
+    // switch (a) {
+    //     case 2:
+    //         console.log(2);
+    //         break;
+    //     case 6:
+    //         console.log(6);
+    //         break;
+    //     default:
+    //         console.log(0) // 0 当 a 和下面对应上时 执行对应的代码
+    // }
+
+    // 需要注意 || &&的使用
+    // var a = 'test';
+    // var b = 10;
+    // switch (true) {
+    //     case (a || b == 10):
+    //         console.log('ppx') // 执行不到这个地方 因为 a||b 结果为 'test'!= true
+    //         break;
+    //     default:
+    //         console.log('ops') //ops
+    // }
+</script>
+
+</html>
