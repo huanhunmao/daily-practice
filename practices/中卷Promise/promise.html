@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 先解释几个 术语  决议 resolve  完成 fulfill 拒绝 reject
+    //promise 参数 为什么我建议使用 （fulfill,reject）
+
+    // 1、promise 基本构造形式 
+    // var p = new promise(function () {
+    //     //x()  用于完成
+    //     //y()  用于拒绝 ...拒绝里面可写拒绝理由
+    // })
+
+    // 2、但是 resolve 既可能表示 完成 也可能表示拒绝
+    //  第二个比较重要的事情是 Promise.resolve(...)会传入一个真正的Promise直接返回或者传入thenable会展开
+    /*
+    var rejectedTs = {
+        then: function (resolved, rejected) {
+            rejected("ops")
+        }
+    }
+
+    var rejectedTp = Promise.resolve(rejectedTs)
+    console.log(rejectedTp) */ //Promise {<pending>}  [[PromiseState]]: "rejected" [[PromiseResult]]: "ops"
+
+    // 3、 再来一个例子说明一下这个情况
+    var rejectTs = new Promise((resolve, reject) => {
+        resolve(Promise.reject('ops')) //传入的是一个 rejected状态的promise 
+    })
+
+    rejectTs.then(
+        function fulfill() {
+            // 永远不会执行到这个地方
+        },
+        function rejected(err) {
+            console.log(err) // ops
+        }
+    )
+</script>
+
+</html>
