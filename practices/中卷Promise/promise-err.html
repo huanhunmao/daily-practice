@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 本节的目的说明 和promise相关的 三种错误处理方式 
+
+    //1、try...catch  同步形式 
+    /* 
+    function foo() {
+         setTimeout(function () {
+             baz.bar() // 因为 这个地方 出错 baz 和 bar 都没有定义 
+         }, 1000)
+     }
+
+     try {
+         foo() // baz is not defined
+     } catch (err) {
+         console.log(err) // 这一句永远不会被打印 捕获不到异常
+     }   
+     */
+
+    // 2、error-first 回调风格
+    /*
+    function foo(cb) {
+        setTimeout(function () {
+            try {
+                var x = baz.bar(); //ReferenceError: baz is not defined
+                cb(null, x)
+            } catch (err) {
+                cb(err)
+            }
+        }, 500)
+    }
+
+    foo(function (err, val) {
+        if (err) {
+            console.log(err); // 当前状态 抓不到异常
+        } else {
+            console.log(val)
+        }
+    })
+
+    */
+
+    //    3、promise 回调分离 一个回调用来表示完成 一个表示拒绝
+    /*
+     var p = Promise.reject('ops');
+     p.then(
+         function fulfilled() {},
+         function rejected(err) {
+             console.log(err) // ops
+         }
+     )
+      */
+
+    // 4、另外一种情况 
+    var t = Promise.resolve(43);
+    t.then(
+        function fulfilled(msg) { // 数字这个地方 没有 toLowerCase方法
+            console.log(msg.toLowerCase()) //TypeError: msg.toLowerCase is not a function
+        },
+        function rejected(err) {
+            console.log(err) //  Uncaught (in promise) 这句不会被打印
+        }
+    )
+</script>
+
+</html>
