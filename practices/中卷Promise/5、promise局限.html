@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+    // 第一个局限  单一值  这样更改之后 就可以把结果放在数组中进行返回 
+    function getY(x) {
+        return new Promise((resolve, reject) => {
+            setTimeout(function () {
+                resolve((3 * x) - 1);
+            }, 100)
+        })
+    }
+
+    function foo(bar, baz) {
+        var x = bar * baz;
+        //返回两个promise
+        return [
+            Promise.resolve(x), getY(x) // 这个地方拿到的结果就是 [200,599]
+        ]
+    }
+    Promise.all(foo(10, 20)).then(function (msgs) {
+        var x = msgs[0];
+        var y = msgs[1];
+        console.log(msgs) // [200,599]
+        console.log(x, y) // 200 599
+    })
+
+    */
+
+
+    /*
+    //es6 解构简化一下   
+    function foo(bar, baz) {
+        var x = bar * baz;
+        //返回两个promise
+        return [
+            Promise.resolve(x), getY(x) // 这个地方拿到的结果就是 [200,599]
+        ]
+    }
+
+    Promise.all(
+        foo(10, 20)
+    ).then(function ([x, y]) {
+        console.log(x, y) // 200 599
+    })   */
+
+    // 下一部分 惯性
+    // polyfill 安全检查
+    /*
+    if (!Promise.wrap) {
+        Promise.wrap = function (fn) {
+            return function () {
+                var args = [].slice.call(arguments);
+                return new Promise((resolve, reject) => {
+                    // error-first 风格
+                    fn.apply(null, args, concat(function (err, v) {
+                        if (err) {
+                            reject(err)
+                        } else {
+                            resolve(v)
+                        }
+                    }))
+                })
+            }
+        }
+    }
+
+    */
+
+    // 无法取消的Promise 
+    function foo() {}
+    var p = foo(42);
+    Promise.rece([p, timeoutPromise(3000)]).then(
+        doSomthing, handleError
+    )
+    p.then(function () {
+        console.log('超时也会执行') //打印
+    })
+</script>
+
+</html>
