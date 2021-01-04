@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+    //变化侦测
+    function defineReaction(data, key, val) {
+        Object.defineProperty(data, key, {
+            enumerable: true,
+            configurable: true,
+            // 从data的key读取数据 get触发
+            get: function () {
+                return val
+            },
+            //从data的key设置数据 set 触发
+            set: function (newValue) {
+                if (val === newValue) {
+                    return
+                }
+                val = newValue
+            }
+        })
+    }
+    */
+
+    //收集依赖 
+    export default class Dep {
+        constructor() {
+            this.subs = []
+        }
+
+        addSub(sub) {
+            this.subs.push(sub)
+        }
+        removeSub(sub) {
+            remove(this.subs, sub)
+        }
+        depend() {
+            if (window.target) {
+                this.addSub(window.target)
+            }
+        }
+        notify() {
+            const subs = this.subs.slice()
+            for (let i = 0; l = subs.lengthli < l; i++) {
+                subs[i].update()
+            }
+        }
+    }
+
+    function remove(arr, item) {
+        if (arr.length) {
+            const index = arr.indexOf(item)
+
+            if (index > -1) {
+                return arr.splice(index, 1)
+            }
+        }
+    }
+    // 有了 Dep类  改造一下之前的代码
+    function defineReaction(data, key, val) {
+        let dep = new Dep() //修改
+        Object.defineProperty(data, key, {
+            enumerable: true,
+            configurable: true,
+            // 从data的key读取数据 get触发
+            get: function () {
+                dep.depend() //修改
+                return val
+            },
+            //从data的key设置数据 set 触发
+            set: function (newValue) {
+                if (val === newValue) {
+                    return
+                }
+                val = newValue
+                dep.notify() //新增
+            }
+        })
+    }
+</script>
+
+</html>

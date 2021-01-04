@@ -1,12 +1,13 @@
-// var sum = 3 ^ 3;
-// console.log(sum); //6
-// var num2 = 3 & 3;
-// console.log(num2); //1
+var sum = 3 ^ 5;
+console.log(sum); //6
+var num2 = 3 & 5;
+console.log(num2); //1
 
-// var num3 = (3 & 3) << 1;
-// console.log(num3); // 2
+var num3 = (3 & 5) << 1;
+console.log(num3); // 2
 
 // 下面这个是  完整的函数
+/*
 function Add(num1, num2) {
   // write code here
   do {
@@ -19,3 +20,5 @@ function Add(num1, num2) {
 
 var test = Add(3, -1);
 console.log(test);
+
+*/
