@@ -32,42 +32,114 @@
     }
     */
 
-    //收集依赖 
-    export default class Dep {
-        constructor() {
-            this.subs = []
-        }
 
-        addSub(sub) {
-            this.subs.push(sub)
-        }
-        removeSub(sub) {
-            remove(this.subs, sub)
-        }
-        depend() {
-            if (window.target) {
-                this.addSub(window.target)
+    /* //收集依赖 
+     export default class Dep {
+         constructor() {
+             this.subs = []
+         }
+
+         addSub(sub) {
+             this.subs.push(sub)
+         }
+         removeSub(sub) {
+             remove(this.subs, sub)
+         }
+         depend() {
+             if (window.target) {
+                 this.addSub(window.target)
+             }
+         }
+         notify() {
+             const subs = this.subs.slice()
+             for (let i = 0; l = subs.lengthli < l; i++) {
+                 subs[i].update()
+             }
+         }
+     }
+
+     function remove(arr, item) {
+         if (arr.length) {
+             const index = arr.indexOf(item)
+
+             if (index > -1) {
+                 return arr.splice(index, 1)
+             }
+         }
+     }
+     // 有了 Dep类  改造一下之前的代码
+     function defineReaction(data, key, val) {
+         let dep = new Dep() //修改
+         Object.defineProperty(data, key, {
+             enumerable: true,
+             configurable: true,
+             // 从data的key读取数据 get触发
+             get: function () {
+                 dep.depend() //修改
+                 return val
+             },
+             //从data的key设置数据 set 触发
+             set: function (newValue) {
+                 if (val === newValue) {
+                     return
+                 }
+                 val = newValue
+                 dep.notify() //新增
+             }
+         })
+     }
+     */
+
+    /*
+//    Watcher 类
+export default class Watcher{
+    constructor(vm,ex,cb){
+        this.vm = vm
+        // 执行 this.getter() 可读取data.a.b.c内容
+        this.getter = parsePath(ex)
+        this.cb = cb
+        this.value = this.get()
+    }
+
+    get(){
+        window.target = this
+        let value =  this.getter.call(this.vm,this.vm)
+        window.target  = undefined
+        return value
+    }
+
+    update(){
+        const oldValue = this.value
+        this.value = this.get()
+        this.cb.call(this.vm,this.value,oldValue)
+    }
+}
+
+*/
+
+    // 递归侦测 所有key 
+    export class Observer {
+        constructor(value) {
+            this.value = value;
+            if (!Array.isArray(value)) {
+                this.walk(value)
             }
         }
-        notify() {
-            const subs = this.subs.slice()
-            for (let i = 0; l = subs.lengthli < l; i++) {
-                subs[i].update()
+        // walk将每个属性转换成 getter/setter形式来侦测变化
+        // 只有当数据类型为 Object时 被调用
+        walk(obj) {
+            const keys = Object.keys(obj)
+            for (let i = 0; i < keys.length; i++) {
+                defineReactive(obj, keys[i], obj[keys[i]])
             }
         }
     }
 
-    function remove(arr, item) {
-        if (arr.length) {
-            const index = arr.indexOf(item)
-
-            if (index > -1) {
-                return arr.splice(index, 1)
-            }
-        }
-    }
-    // 有了 Dep类  改造一下之前的代码
     function defineReaction(data, key, val) {
+        //新增递归子属性
+        if (typeof val === 'object') {
+            new Observer(val)
+        }
         let dep = new Dep() //修改
         Object.defineProperty(data, key, {
             enumerable: true,
