@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 无法使用这几种表达就返回 false 不会往下执行
+    function abbr() {
+        if (!document.createElement || !document.createTextNode ||
+            !document.getElementsByTagName) {
+            return false
+        }
+        // 如果使用到 abbr 
+        var abbr = document.getElementsByTagName('abbr');
+        if (abbr.length < 1) {
+            return false
+        }
+        for (var i = 0; i < abbr.length; i++) {
+            //如果当前元素没有子节点 立即执行下一次 循环
+            if (abbr[i].childNodes.length < 1) continue
+        }
+        if (dlist.childNodes.length < 1) {
+            return false
+        }
+    }
+    abbr()
+    var defs = ['W3C', 'DOM']
+    // 创建 dl
+    var dl = document.createElement('dl');
+    // 遍历 defs
+    for (var key in defs) {
+        //defs值给一个变量
+        var definition = defs[key];
+        var dt = document.createElement('dt');
+        //创建文本内容
+        var text1 = document.createTextNode(key);
+        // 文本放入dt中
+        dt.appendChild(text1);
+        var dd = document.createElement('dd');
+        var text2 = document.createTextNode(definition);
+        dd.appendChild(text2);
+        dl.appendChild(dd)
+        dl.appendChild(dt)
+
+    }
+
+    // var h2 = document.createElement('h2');
+    // var text3 = document.createTextNode('js实现dl列表');
+    // h2.appendChild(text3);
+    // document.body.appendChild(h2);
+    // 插入body 中 页面展示
+    document.body.appendChild(dl)
+</script>
+
+</html>
