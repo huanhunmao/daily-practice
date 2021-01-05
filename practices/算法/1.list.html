@@ -44,16 +44,40 @@
     */
 
     //再来一个原型链的题目
-    var foo = {}
-    var F = function () {}
-    Object.prototype.a = 'value a'
-    Function.prototype.b = 'value b'
+    /*
+     var foo = {}
+     var F = function () {}
+     Object.prototype.a = 'value a'
+     Function.prototype.b = 'value b'
 
-    console.log(foo.a) // 'value a'
-    console.log(foo.b) // undefined
+     console.log(foo.a) // 'value a'
+     console.log(foo.b) // undefined
 
-    console.log(F.a) // 'value a'
-    console.log(F.b) // 'value b'
+     console.log(F.a) // 'value a'
+     console.log(F.b) // 'value b'
+     */
+
+    // 和json打交道的场景
+    const json = {
+        a: {
+            b: {
+                c: {
+                    d: 1
+                }
+            }
+        },
+        e: {
+            f: 2
+        }
+    }
+    // 设置一条路径  a-->b-->c-->d
+    const path = ['a', 'b', 'c', 'd']
+    let p = json // 设置一个指针 指向 json数据本身
+    path.forEach(k => { // forEach无返回值或者是undefined 
+        p = p[k]; // 指针向下一个属性移动
+    })
+
+    console.log(p) // 可以拿到 结果为 1
 </script>
 
 </html>
