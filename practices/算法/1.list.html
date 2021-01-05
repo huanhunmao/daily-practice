@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 说明原型链
+    /*
+    var obj = {};
+    var array = [];
+    var func = function () {};
+    */
+
+    // 沿着原型链向上 查找
+    /*
+     const obj = {} // 自身是空对象 
+     Object.prototype.x = 'x' // 原型链上设置 x值
+     const func = function () {} // 自身是空函数
+     Function.prototype.y = 'y' //原型链上设置 y值
+     console.log(obj.x) // x 
+     console.log(func.x) // x 
+     console.log(func.y) // y
+     */
+
+    // 实现 instanceOf
+    /*
+    const instanceOf = function (A, B) {
+        let p = A; // 设置一个指针指向 A 
+        while (p) {
+            p = p.__proto__; //原型链向下 寻找的表达
+            if (p === B.prototype) {
+                return true
+            }
+        }
+        return false
+    }
+    */
+
+    //再来一个原型链的题目
+    var foo = {}
+    var F = function () {}
+    Object.prototype.a = 'value a'
+    Function.prototype.b = 'value b'
+
+    console.log(foo.a) // 'value a'
+    console.log(foo.b) // undefined
+
+    console.log(F.a) // 'value a'
+    console.log(F.b) // 'value b'
+</script>
+
+</html>
