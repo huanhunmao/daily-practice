@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 先展示 add 方法
+
+    var set = new Set();
+    set.add(1);
+    console.log(set) //Set(1) {1}
+    set.add(5);
+    console.log(set) //Set(2) {1, 5}
+    set.add(5);
+    console.log(set) //还是 Set(2) {1, 5} set中不允许 重复
+
+    // 可添加 多种其他类型
+    set.add('text');
+    console.log(set) //Set(3) {1, 5, "text"} 添加的字符串
+    set.add({
+        a: 1,
+        b: 3
+    });
+    console.log(set) // Set(4) {1, 5, "text", {…}}  添加对象
+    // 看似 又添加了一个完全一样的对象 实则不一样 两个在内存地址中位置不一样
+    set.add({
+        a: 1,
+        b: 3
+    });
+    console.log(set) //Set(5) {1, 5, "text", {…}, {…}}
+
+
+
+    //展示 has方法 
+    const has1 = set.has(1)
+    console.log(has1) // true
+    const has2 = set.has({
+        a: 1,
+        b: 3
+    })
+    console.log(has2) // false  对象需要注意 即使对象形式一样 但是在内存上地址不一样
+
+    var obj1 = {
+        a: 1,
+        b: 6
+    }
+    var obj2 = {
+        a: 1,
+        b: 6
+    }
+    console.log(obj1 === obj2) // false
+
+
+
+    //delete  
+    set.delete(5)
+    console.log(set) // 删除了set里面的 5 并且 size减小了 1
+
+    //迭代方法 
+    // 第一种方法
+    // for (let item of set) {
+    //     console.log(item)
+    // }
+
+    //第二种方法
+    // for (let item of set.keys()) {
+    //     console.log(item)
+    // }
+
+
+    //第三种方法
+    // for (let item of set.values()) {
+    //     console.log(item)
+    // }
+
+    // 验证 
+    // for ([keys, values] of set.entries()) {
+    //     console.log(keys, values);
+
+    // }
+
+    // set Array   互相转化
+    /*
+    // 第一种方法
+    var myArr = [...set]
+    console.log(myArr) //(4) [1, "text", {…}, {…}]
+    // 第二种方法
+    var myArr1 = Array.from(set)
+    console.log(myArr1) //(4) [1, "text", {…}, {…}]
+    // 第三种方法
+    var myArr2 = Array.of(set)
+    console.log(myArr2) // [Set(4)] 在整个外面套了一层数组
+    */
+
+    // Array 栈 Set
+    // var set2 = new Set([1, 2, 3, 4])
+    // console.log(set2) //Set(4) {1, 2, 3, 4}
+
+    // Set交集
+    var set1 = new Set([1, 2, 3])
+    var set2 = new Set([1, 2])
+    var myArr = ([...set1].filter(x =>
+        set2.has(x)
+    ))
+    console.log(myArr) //  [1, 2]
+</script>
+
+</html>
