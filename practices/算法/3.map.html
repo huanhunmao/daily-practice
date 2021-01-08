@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var m = new Map();
+    //增 查
+    m.set('a', 'aa'); //保存key-value对
+    // console.log(m);
+    m.set('b', 'bb');
+    console.log(m) //Map(2) {"a" => "aa", "b" => "bb"}
+    //使用 get 获取属性对应的值
+    // var p = m.get('a')
+    // console.log(p) //aa
+
+    // 删 
+    m.delete('b') // 删除了 key-->b 对应的value也没了
+    console.log(m) //Map(1) {"a" => "aa"} 
+    // m.clear()
+    // console.log(m) //Map(0) {} 删除所有的内容
+
+    // 改  可使用set 覆盖
+    m.set('a', '666') // 将原本的 'aa' 改成了 'aaa'
+    console.log(m) //Map(1) {"a" => "666"} 
+</script>
+
+</html>

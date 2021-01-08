@@ -110,6 +110,14 @@
         set2.has(x)
     ))
     console.log(myArr) //  [1, 2]
+
+    // Set差集
+    var set1 = new Set([1, 2, 3])
+    var set2 = new Set([1, 2])
+    var myArr = ([...set1].filter(x =>
+        !set2.has(x)
+    ))
+    console.log(myArr) //  [3] 
 </script>
 
 </html>

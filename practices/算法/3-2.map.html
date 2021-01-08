@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // leetcode 1 求两个数之和
+    // var twoSum = function (nums, target) {
+    //     var map = new Map()
+    //     for (var i = 0; i < nums.length; i++) {
+    //         const n = nums[i]; // 拿到每个数组值
+    //         const n2 = target - n; // 匹配值
+    //         // 匹配到之后  拿到两个的下标
+    //         if (map.has(n2)) {
+    //             return [map.get(n2), i]
+    //             //没有匹配上 则 先将值和下标存在map中
+    //         } else {
+    //             map.set(n, i)
+    //         }
+    //     }
+    // }
+
+    // var test = twoSum([1, 2, 3, 6], 9)
+    // console.log(test) // [2,3]
+
+
+    // test
+    var twoSum = function (num1, target) {
+        var map = new Map()
+        for (var i = 0; i < num1.length; i++) {
+            const n = num1[i]
+            const n2 = target - n
+            if (map.has(n2)) {
+                return [map.get(n2), i]
+            } else {
+                map.set(n, i)
+            }
+        }
+    }
+
+    var test = twoSum([1, 2, 3], 4)
+    console.log(test) //[0,2]
+</script>
+
+</html>

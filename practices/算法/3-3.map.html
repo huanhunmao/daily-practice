@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*  leetcode 第三题
+    // 时间复杂度O(n) n表示s.length 空间复杂度 O(m)  m是字符串 不重复字符个数
+    var lengthOfLongestSubstring = function (s) {
+        // 新建两个移动指针 l r
+        let l = 0;
+        // 初始化结果
+        let res = 0;
+        // 新建字典 
+        const map = new Map();
+        for (var r = 0; r < s.length; r++) {
+            // 如果字典中 再次出现右指针指向的东西
+            if (map.has(s[r]) && map.get(s[r]) >= l) {
+                // 左指针向右指针下一位移动
+                l = map.get(s[r]) + 1;
+            }
+            res = Math.max(res, r - l + 1);
+            map.set(s[r], r)
+        }
+        return res;
+    }
+
+    var test = lengthOfLongestSubstring('abdccda'); // 4
+    console.log(test) 
+    */
+
+
+    //test
+    var fs = function (s) {
+        var l = 0;
+        var res = 0;
+        var map = new Map();
+        for (var r = 0; r < s.length; r++) {
+            if (map.has(s[r]) && map.get(s[r]) >= l) {
+                l = map.get(s[r]) + 1
+            }
+            res = Math.max(res, r - l + 1)
+            map.set(s[r], r)
+        }
+        return res
+    }
+
+    var tes = fs('abcopdca')
+    console.log(tes)
+</script>
+
+</html>
