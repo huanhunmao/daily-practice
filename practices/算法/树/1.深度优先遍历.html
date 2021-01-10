@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 新建树 利用 Object和Array
+    var tree = {
+        val: 'a',
+        children: [{
+                val: 'b',
+                children: [{
+                        val: 'd',
+                        children: []
+                    },
+                    {
+                        val: 'e',
+                        children: [],
+                    }
+                ],
+            },
+            {
+                val: 'c',
+                children: [{
+                        val: 'f',
+                        children: []
+                    },
+                    {
+                        val: 'g',
+                        children: [],
+                    }
+                ],
+            }
+        ]
+    }
+
+    // 深度优先遍历
+    var dfs = function (root) {
+        // 1、访问根节点
+        console.log(root.val); // a b  d  e c f g
+        // 2、对根节点的 children挨个进行深度优先遍历
+        // root.children.forEach((child) => {
+        //     dfs(child)
+        // })
+        //简化一下代码
+        root.children.forEach(dfs)
+    }
+
+    var test = dfs(tree)
+</script>
+
+</html>

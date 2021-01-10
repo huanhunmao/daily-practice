@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<!-- 引入 新建的二叉树  因为这是一个html文件-->
+<!-- 如果这个地方新建的是一个js文件 直接 const bt = require('./二叉树.js') -->
+<script src="./3.二叉树.js"></script>
+<script>
+    var pre = function (root) {
+        // 防错 节点不为空 return 不再往下走
+        if (!root) {
+            return;
+        }
+        console.log(root.val)
+        pre(root.left)
+        pre(root.right)
+    }
+
+    // 测试一下 
+    var test = pre(bt)
+</script>
+
+</html>
