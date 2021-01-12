@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 这是一个json文件 怎么遍历它的每一个节点呢 ？
+    // 使用深度优先遍历
+    const json = {
+        a: {
+            b: {
+                c: 1
+            }
+        },
+        d: [1, 2]
+    }
+
+    var dfs = function (n, path) {
+        console.log(n, path)
+        Object.keys(n).forEach(k => {
+            dfs(n[k], path.concat(k))
+        })
+    }
+    dfs(json, [])
+</script>
+
+</html>
