@@ -14,6 +14,8 @@
 <!-- 如果这个地方新建的是一个js文件 直接 const bt = require('./二叉树.js') -->
 <script src="./3.二叉树.js"></script>
 <script>
+    //递归版本
+
     var ino = function (root) {
         if (!root) {
             return
@@ -22,6 +24,34 @@
         console.log(root.val)
         ino(root.right)
     }
+
+
+    // 非递归版本
+    // var ino = function (root) {
+    //     if (!root) {
+    //         return
+    //     }
+    //     // 新建栈
+    //     const stack = []
+    //     //新建指针
+    //     var p = root
+    //     while (stack.length || p) {
+    //         while (p) {
+    //             //将左节点放入栈中
+    //             stack.push(p)
+    //             p = p.left
+    //         }
+    //         //访问根节点
+    //         const n = stack.pop()
+    //         console.log(n.val)
+    //         //将右节点放入栈中
+    //         p = n.right
+    //     }
+    // }
+
+
+
+
 
     //test
     var test = ino(bt)

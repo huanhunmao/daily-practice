@@ -14,15 +14,40 @@
 <!-- 如果这个地方新建的是一个js文件 直接 const bt = require('./二叉树.js') -->
 <script src="./3.二叉树.js"></script>
 <script>
-    var pre = function (root) {
-        // 防错 节点不为空 return 不再往下走
-        if (!root) {
-            return;
-        }
-        console.log(root.val)
-        pre(root.left)
-        pre(root.right)
-    }
+    // 递归版本
+
+    // var pre = function (root) {
+    //     // 防错 节点不为空 return 不再往下走
+    //     if (!root) {
+    //         return;
+    //     }
+    //     console.log(root.val)
+    //     pre(root.left)
+    //     pre(root.right)
+    // }
+
+
+
+
+    // 非递归版本
+    // var pre = function (root) {
+    //     if (!root) {
+    //         return;
+    //     }
+    //     var stack = [root]
+    //     while (stack.length) {
+    //         var n = stack.pop()
+    //         console.log(n.val)
+    //         if (n.right) stack.push(n.right)
+    //         if (n.left) stack.push(n.left)
+    //     }
+    // }
+
+
+
+
+
+
 
     // 测试一下 
     var test = pre(bt)

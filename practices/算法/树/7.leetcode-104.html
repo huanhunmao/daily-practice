@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./3-1.二叉树.js"></script>
+<script>
+    // leetcode 104 最大深度层级
+    var maxDepth = function (root) {
+
+        var deep = 0;
+        var dfs = function (n) {
+            if (!n) {
+                return
+            }
+            console.log(n.val)
+            dfs(n.left)
+            dfs(n.right)
+        }
+        //test
+        dfs()
+    };
+    maxDepth(bt)
+</script>
+
+</html>

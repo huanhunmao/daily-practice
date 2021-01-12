@@ -14,6 +14,7 @@
 <!-- 如果这个地方新建的是一个js文件 直接 const bt = require('./二叉树.js') -->
 <script src="./3.二叉树.js"></script>
 <script>
+    // 递归版本
     var bed = function (root) {
         if (!root) {
             return
@@ -22,6 +23,35 @@
         bed(root.right)
         console.log(root.val)
     }
+
+
+
+
+    // 非递归版本
+    // var bed = function (root) {
+    //     if (!root) {
+    //         return
+    //     }
+    //     //新建两个栈
+    //     const stack = [root]
+    //     const outputStack = []
+    //     while (stack.length) {
+    //         // 访问根节点
+    //         const n = stack.pop()
+    //         // 根节点放入输出栈中
+    //         outputStack.push(n)
+    //         // 分别对左节点和右节点入栈操作 这个刚好和先序遍历相反
+    //         if (n.left) stack.push(n.left)
+    //         if (n.right) stack.push(n.right)
+    //     }
+    //     // 将结果出栈
+    //     while (outputStack.length) {
+    //         var n = outputStack.pop()
+    //         console.log(n.val)
+    //     }
+    // }
+
+
 
     // test 
     var test = bed(bt)
