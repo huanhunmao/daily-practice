@@ -18,6 +18,7 @@ highlight:
 ***ULTRA_WebSite_Admin后台管理系统****
 1、npm run dev 就可     需要等待几分钟  
 2、 localhost:9080 
+3、出现问题后 安装 cnpm i @types/node
 
 
 *****ULTRA_WebSite_Service*****
@@ -497,7 +498,7 @@ highlight:
 
 `7:24     7:55   hbs`
 
-
+`18:42    19：51    50分钟 整理了一下 官网的内容   总结一下 环境搭建相关的内容   `
 
 
 
