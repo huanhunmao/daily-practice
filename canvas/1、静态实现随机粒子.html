@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            /* 溢出隐藏 */
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            cursor: none;
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        var ctx = document.getElementById('canvas'),
+            // 这里的context就是<canvas>的绘制2D上下文
+            content = ctx.getContext('2d'),
+            round = [],
+            WIDTH,
+            HEIGHT,
+            // 需要一个变量 initRoundPopulation 来设置 round 的个数，然后我们便可以通过 for 循环创建出 initRoundPopulation 个圆
+            initRoundPopulation = 800;
+
+        // 使用 WIDTH、HEIGHT 两个常量储存屏幕宽度和高度信息        
+        WIDTH = document.documentElement.clientWidth;
+        HEIGHT = document.documentElement.clientHeight;
+
+        ctx.width = WIDTH;
+        ctx.height = HEIGHT;
+
+        // 设置 Round_item 类
+        // 位置随机、透明度随机、半径随机的圆
+        function Round_item(index, x, y) {
+            this.index = index;
+            this.x = x;
+            this.y = y;
+            // 半径随机的圆
+            this.r = Math.random() * 2 + 1;
+            // 位置随机
+            var alpha = (Math.floor(Math.random() * 10) + 1) / 10 / 2;
+            // 透明度随机
+            this.color = "rgba(255,255,255," + alpha + ")";
+        }
+
+        // 设置 draw() 方法
+        Round_item.prototype.draw = function() {
+            // 设置或返回用于填充绘画的颜色、渐变或模式
+            content.fillStyle = this.color;
+            // 设置或返回用于阴影的模糊级别   
+            content.shadowBlur = this.r * 2;
+            // 起始一条路径，或重置当前路径
+            content.beginPath();
+            // 创建圆弧
+            content.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+            // 创建从当前点回到起始点的路径
+            content.closePath();
+            // 填充路径 
+            content.fill();
+        };
+        // 设置初始化 init() 函数
+        function init() {
+            for (var i = 0; i < initRoundPopulation; i++) {
+                round[i] = new Round_item(i, Math.random() * WIDTH, Math.random() * HEIGHT);
+                round[i].draw();
+            }
+
+        }
+        //执行初始化函数
+        init();
+    </script>
+</body>
+
+</html>
