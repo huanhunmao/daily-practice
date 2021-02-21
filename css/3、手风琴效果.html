@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴效果</title>
+    <style>
+        .accordion {
+            display: flex;
+            width: 600px;
+            height: 200px;
+        }
+        
+        li {
+            /* 鼠标未悬浮状态 */
+            flex: 1;
+            cursor: pointer;
+            /* 动画过渡时间 */
+            transition: all 300ms;
+        }
+        
+        li:nth-child(1) {
+            background-color: #f66;
+        }
+        
+        li:nth-child(2) {
+            background-color: #66f;
+        }
+        
+        li:nth-child(3) {
+            background-color: #f90;
+        }
+        
+        li:nth-child(4) {
+            background-color: #09f;
+        }
+        
+        li:nth-child(5) {
+            background-color: #9c3;
+        }
+        
+        li:nth-child(6) {
+            background-color: #3c9;
+        }
+        
+        li:hover {
+            /* 鼠标悬浮状态 */
+            flex: 2;
+            background-color: #ccc;
+        }
+        
+        ul,
+        li {
+            list-style: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bruce flex-ct-x" data-title="手风琴">
+        <ul class="accordion">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
