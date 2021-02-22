@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .track-btn {
+            overflow: hidden;
+            position: relative;
+            border-radius: 25px;
+            width: 400px;
+            height: 50px;
+            background-color: #66f;
+            cursor: pointer;
+            line-height: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        span {
+            position: relative;
+            /* 不加会卡顿 */
+            pointer-events: none;
+        }
+
+        .track-btn::before {
+            --size: 0;
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            background-image: radial-gradient(circle closest-side, #09f, transparent);
+            content: "";
+            transform: translate3d(-50%, -50%, 0);
+            transition: width 200ms ease, height 200ms ease;
+        }
+
+        .track-btn:hover::before {
+            --size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bruce flex-ct-x" data-title="悬浮跟踪按钮">
+        <a class="track-btn">
+            <span>妙用CSS变量，让你的CSS变得更心动</span>
+        </a>
+    </div>
+</body>
+<script>
+    const btn = document.getElementsByClassName("track-btn")[0];
+    const btnStyle = btn.style;
+
+    btn.addEventListener("mousemove", e => {
+        btnStyle.setProperty("--x", `${e.offsetX}px`);
+        btnStyle.setProperty("--y", `${e.offsetY}px`);
+    });
+</script>
+
+</html>

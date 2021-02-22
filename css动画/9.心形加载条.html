@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heart-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+            height: 10px;
+        }
+
+        li {
+            /* 定义两个css变量 */
+            /* 转、圈（Turns）。一个圆共1圈 */
+            /* .5turn 翻转 180度 */
+            --Θ: calc(var(--line-index) / var(--line-count) * .5turn);
+            /* 每一个循环时间 */
+            --time: calc((var(--line-index) - 1) * 40ms);
+            border-radius: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: #3c9;
+            /* 滤镜的色相旋转hue-rotate()，目的是为了使颜色过渡得更自然 */
+            filter: hue-rotate(var(--Θ));
+            /* 属性定义动画完成一个周期所需要的时间，以秒或毫秒计 */
+            animation-duration: 1s;
+            animation-delay: var(--time);
+            /* 定义动画的播放次数   无限循环  */
+            animation-iteration-count: infinite;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .line-1,
+        .line-9 {
+            animation-name: beat-1;
+        }
+
+        .line-2,
+        .line-8 {
+            animation-name: beat-2;
+        }
+
+        .line-3,
+        .line-7 {
+            animation-name: beat-3;
+        }
+
+        .line-4,
+        .line-6 {
+            animation-name: beat-4;
+        }
+
+        .line-5 {
+            animation-name: beat-5;
+        }
+
+
+        @keyframes beat-1 {
+
+            0%,
+            10%,
+            90%,
+            100% {
+                height: 10px;
+            }
+
+            45%,
+            55% {
+                height: 30px;
+                transform: translate3d(0, -15px, 0);
+            }
+        }
+
+        @keyframes beat-2 {
+
+            0%,
+            10%,
+            90%,
+            100% {
+                height: 10px;
+            }
+
+            45%,
+            55% {
+                height: 60px;
+                transform: translate3d(0, -30px, 0);
+            }
+        }
+
+        @keyframes beat-3 {
+
+            0%,
+            10%,
+            90%,
+            100% {
+                height: 10px;
+            }
+
+            45%,
+            55% {
+                height: 80px;
+                transform: translate3d(0, -40px, 0);
+            }
+        }
+
+        @keyframes beat-4 {
+
+            0%,
+            10%,
+            90%,
+            100% {
+                height: 10px;
+            }
+
+            45%,
+            55% {
+                height: 90px;
+                transform: translate3d(0, -30px, 0);
+            }
+        }
+
+        @keyframes beat-5 {
+
+            0%,
+            10%,
+            90%,
+            100% {
+                height: 10px;
+            }
+
+            45%,
+            55% {
+                height: 90px;
+                transform: translate3d(0, -20px, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bruce flex-ct-x" data-title="心形加载条">
+        <div class="heart-loading">
+            <ul style="--line-count: 9">
+                <li class="line-1" style="--line-index: 0"></li>
+                <li class="line-2" style="--line-index: 1"></li>
+                <li class="line-3" style="--line-index: 2"></li>
+                <li class="line-4" style="--line-index: 3"></li>
+                <li class="line-5" style="--line-index: 4"></li>
+                <li class="line-6" style="--line-index: 5"></li>
+                <li class="line-7" style="--line-index: 6"></li>
+                <li class="line-8" style="--line-index: 7"></li>
+                <li class="line-9" style="--line-index: 8"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

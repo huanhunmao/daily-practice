@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>上下滚动</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div#miaovslide {
+            text-align: center;
+        }
+
+        .wrap {
+            width: 500px;
+            overflow: hidden;
+            height: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .wrap img {
+            width: 100%;
+        }
+
+        li {
+            list-style: none;
+            width: 700px;
+            height: 344px;
+            padding: 10px 0;
+        }
+
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oDiv = document.getElementById('miaovslide');
+            // var oUl = oDiv.getElementsByTagName('ul')[0];
+            // var aLi = oUl.getElementsByTagName('li');//获取所有的li
+            var wrap1 = oDiv.getElementById('wrap1')
+            // var oUp = document.getElementById('up');//获取向上轮播的按钮
+            // var oDown = document.getElementById('down');//获取向下轮播的按钮
+            // var timer = null;//定义定时器
+            var iSpeed = 0;//定义初始速度
+            // oUl.innerHTML + oUl.innerHTML; //实现循环无间断的图片流
+            // oUp.onmousedown = function () {
+            //     timer = setInterval(doMove, 30);
+            //     iSpeed = -5;
+            //     //当按下向左的按钮时，设置速度为负，即向上滚动
+            // };
+            oUp = function () {
+                timer = setInterval(doMove, 100);
+                iSpeed = -8;
+                //当按下向左的按钮时，设置速度为负，即向上滚动
+            };
+            oUp()
+            // oUp.onmouseup = function () {
+            //     clearInterval(timer);
+            //     //当抬起鼠标时，清除定时器
+            // };
+            // oDown.onmousedown = function () {
+            //     iSpeed = 5;
+            //     timer = setInterval(doMove, 30);
+            //     //当鼠标按下向右的按钮时，设置速度为正，即向下滚动
+
+            // }
+            // oDown.onmouseup = function () {
+            //     clearInterval(timer);
+            //     //当鼠标抬起时，清除定时器
+
+            // }
+            function doMove() {
+                wrap1.style.top = wrap1.offsetTop + iSpeed + 'px';
+                if (wrap1.offsetTop < -wrap1.offsetHeight / 2) {
+                    wrap1.style.top = '0px';
+                } else if (wrap1.offsetTop > 0) {
+                    wrap1.style.top = -wrap1.offsetHeight / 2 + 'px';
+                }
+            };
+        };
+
+    </script>
+</head>
+
+<body>
+    <div class="slide_module" id="miaovslide">
+        <!-- <div id="up"><img src="images/prevup.png"></div> -->
+
+        <div class="wrap" id="wrap1">
+            <img src="images/product-8.png">
+
+            <!-- <ul>
+                <li><img src="images/product-8.png"></li>
+                <li><img src="images/product-9.png"></li>
+                <li><img src="images/product-10.png"></li>
+                <li><img src="images/product-11.png"></li>
+            </ul> -->
+        </div>
+        <div class="wrap" id="wrap2">
+            <img src="images/product-9.png">
+        </div>
+        <!-- <div id="down"><img src="images/nextdown.png"></div> -->
+    </div>
+</body>
+
+</html>
