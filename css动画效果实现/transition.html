@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1、demo_1 是一个最基本的动画效果 */
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            /* 时间函数 linear 是匀速走 */
+            /* ease  先加速 最后减速 */
+        }
+        /* .demo_1:hover {
+            width: 500px;
+            transition: width ease 2s;
+        } */
+        
+        .demo_2:hover {
+            /* 旋转 45度 并且在1s内完成 */
+            transform: rotate(45deg);
+            transition: transform 1s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box demo_1 demo_2"></div>
+</body>
+
+</html>

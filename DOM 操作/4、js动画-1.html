@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="message">hello !</p>
+</body>
+<script>
+    function moveMessage() {
+        var elem = document.getElementById('message')
+        var x = parseInt(elem.style.left)
+        var y = parseInt(elem.style.top)
+        if (x == 200 && y == 100) {
+            return true
+        }
+        if (x < 200) {
+            x++
+        }
+        if (x > 200) {
+            x--
+        }
+        if (y < 100) {
+            y++
+        }
+        if (y > 100) {
+            y--
+        }
+
+        elem.style.left = x + 'px'
+        elem.style.top = y + 'px'
+        movement = setTimeout('moveMessage()', 10)
+    }
+
+
+    // function positionMessage() {
+    //     var elem = document.getElementById('message')
+    //     elem.style.position = 'absolute'
+    //     elem.style.left = '10px'
+    //     elem.style.top = '10px'
+    //     elem.style.fontSize = '40px'
+
+    //     // movement = setTimeout("moveMessage()", 10)
+    // }
+
+    // 执行方式 下面这两种
+    window.onload = moveMessage
+        // window.onload = positionMessage
+        // function addLoadEvent(func) {
+        //     var oldload = window.onload
+        //     if (typeof window.onload != 'function') {
+        //         window.onload = func
+        //     } else {
+        //         window.onload = function() {
+        //             oldload()
+        //             func()
+        //         }
+        //     }
+        // }
+        // addLoadEvent(moveMessage)
+</script>
+
+</html>

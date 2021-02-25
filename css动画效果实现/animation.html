@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .demo_2 {
+            /* position: absolute;
+            left: 300px;
+            top: 300px; */
+            width: 100px;
+            height: 100px;
+            background-color: #000000;
+            /* 时间函数 linear 是匀速走 */
+            /* ease  先加速 最后减速 */
+        }
+        
+        .demo_2:hover {
+            animation: move 2s linear;
+        }
+        
+        .cell:hover {
+            animation: move 2s linear 2 alternate pausing;
+        }
+        
+        .cell {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        
+        @keyframes move {
+            100% {
+                transform: translateX(200px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box demo_2"></div>
+    <div class="cell"></div>
+</body>
+
+</html>

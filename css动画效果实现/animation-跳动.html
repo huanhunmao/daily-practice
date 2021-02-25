@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            animation: jump 2s cubic-bezier(0.42, 0, 0.82, 0.3) infinite;
+            border-radius: 50%;
+        }
+        
+        @keyframes jump {
+            0% {
+                transform: translateY(0px);
+            }
+            90% {
+                transform: translateY(200px);
+                /* clip-path CSS 属性使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏。 */
+                clip-path: ellipse(50% 50% at 50% 50%);
+            }
+            100% {
+                transform: translateY(0px);
+                clip-path: ellipse(50% 45% at 50% 48%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 实现的是元素的跳动效果 -->
+    <div class="cell"></div>
+</body>
+
+</html>
