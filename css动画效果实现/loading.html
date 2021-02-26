@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .loading {
-            width: 64px;
-            height: 64px;
-            background: url(./imgs/loading.jpg) no-repeat;
-            animation: load 2s steps(12) infinite;
+      .loading {
+        width: 64px;
+        height: 64px;
+        background: url(./imgs/loading.jpg) no-repeat;
+        animation: load 2s steps(12) 2;
+      }
+
+      @keyframes load {
+        100% {
+          transform: rotate(360deg);
         }
-        
-        @keyframes load {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class="loading">
-    </div>
-</body>
+  <body>
+    <div class="loading"></div>
+  </body>
 
+  <script>
+    let $loading = document.querySelector(".loading");
+    //监听 动画开始
+    $loading.addEventListener("animationstart", () => {
+      console.log("runstart");
+    });
+    //监听动画结束
+    $loading.addEventListener("animationend", () => {
+      console.log("runend");
+    });
+    //监听动画的重复 用的比较少
+    $loading.addEventListener("animationiteration", () => {
+      console.log("iteration");
+    });
+  </script>
 </html>
