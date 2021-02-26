@@ -20,12 +20,14 @@
       .content .yudi {
           /* 第一个雨滴定位住 */
         position: absolute;
-        width: 4px;
-        height: 6px;
-        background: #ccc;
-        clip-path: ellipse(10% 30% at 50% 50%);
+        width: 100px;
+        height: 100px;
+        /* background: #ccc;
+        clip-path: ellipse(10% 30% at 50% 50%);  */
+        background: url(./imgs/hongbao.png) no-repeat;
+        background-size:100px 100px ;
         /* 放大/缩小 */
-        transform: scale(6);
+        /* transform: scale(6); */
         /* 现在 不知道选什么时间函数  暂且勇 ease-in占位 */
         animation: drops 1.2s cubic-bezier(0.54, 0, 0.18, 0.34) infinite;
 
@@ -55,7 +57,7 @@
   </head>
   <body>
     <div class="content">
-      <div class="yudi"></div>
+      <div class="yudi" onclick="onTopClick()"></div>
     </div>
   </body>
 
@@ -82,6 +84,28 @@
         // 将创建的div 添加到页面
         $content.append($div)
     }
+
+    // var yudi = document.getElementsByClassName("yudi")
+  
+
+    $(function(){
+var i = 0;
+document.onmousedown=function(event){ 
+ if(i==1){
+window.open('https://juejin.cn/');
+}
+//setTimeout(function (){window.open('https://www.jb51.net')},2000); //定时不太好使，会被浏览器当成广告的
+i++;
+ };
+var j = 0;
+// document.onkeydown=function(event){ 
+//  if(j==1){
+// window.open('http://www.njxblog.com');
+// }
+// //setTimeout(function (){window.open('https://www.jb51.net')},2000); //定时不太好使，会被浏览器当成广告的
+// j++;
+//  };
+});
 </script>
 
   </script>
