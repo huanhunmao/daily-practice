@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 10px solid black;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">test</div>
+</body>
+<script>
+    window.onload = function() {
+        startMove()
+    }
+
+    function startMove() {
+        setInterval(function() {
+            var div1 = document.getElementById('div1')
+            div1.style.width = parseInt(getStyle(div1, 'width')) - 1 + 'px'
+
+            div1.style.fontSize = parseInt(getStyle(div1, "fontSize")) + 1 + "px"
+
+
+        }, 30)
+    }
+
+    // 这个是改变样式的封装方法
+    // getStyle
+    function getStyle(obj, attr) {
+        // ie 浏览器
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr]
+        } else {
+            // 其他浏览器
+            return getComputedStyle(obj, false)[attr]
+        }
+    }
+</script>
+
+</html>

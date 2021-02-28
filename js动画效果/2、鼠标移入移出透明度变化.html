@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+<script>
+    window.onload = function() {
+        var div1 = document.getElementById('div1')
+        div1.onmouseenter = (() => {
+            startMove(100)
+        })
+        div1.onmouseout = (() => {
+            startMove(30)
+        })
+    }
+
+    var timer = null,
+        opacity1 = 30
+
+    function startMove(target) {
+        clearInterval(timer)
+        timer = setInterval(function() {
+            var speed = 0
+                // 这个地方需要判断 当透明度 大于或者小于目标值时怎么变化
+            if (opacity1 > target) {
+                speed = -10
+            } else {
+                speed = 10
+            }
+            if (opacity1 == target) {
+                clearInterval(timer)
+            } else {
+                opacity1 += speed
+                div1.style.opacity = opacity1 / 100
+            }
+        }, 30)
+    }
+</script>
+
+</html>

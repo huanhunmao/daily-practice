@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            left: -200px;
+            top: 0;
+            position: absolute;
+        }
+        
+        #share {
+            width: 40px;
+            height: 20px;
+            background-color: tomato;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <span id="share">分享</span>
+    </div>
+</body>
+
+<script>
+    window.onload = function() {
+        var div1 = document.getElementById('div1')
+        div1.onmouseover = function() {
+            startMove(10, 0)
+        }
+        div1.onmouseout = function() {
+            startMove(-10, -200)
+        }
+    }
+
+    // 这个定义放在函数内会导致抖动
+    var timer = null
+
+    function startMove(speed, target) {
+        // 进行函数 就清空所有定时器 鼠标移入移出就不会有速度差异问题
+        clearInterval(timer)
+
+        var div1 = document.getElementById('div1')
+        timer = setInterval(function() {
+            if (div1.offsetLeft == target) {
+                clearInterval(timer)
+            } else {
+                div1.style.left = div1.offsetLeft + speed + 'px'
+            }
+
+        }, 30)
+    }
+
+    // function startMove1() {
+    //     // 进行函数 就清空所有定时器 鼠标移入移出就不会有速度差异问题
+    //     clearInterval(timer)
+
+    //     var div1 = document.getElementById('div1')
+    //     timer = setInterval(function() {
+    //         if (div1.offsetLeft == -200) {
+    //             clearInterval(timer)
+    //         } else {
+    //             div1.style.left = div1.offsetLeft - 10 + 'px'
+    //         }
+
+    //     }, 30)
+    // }
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        li {
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    window.onload = function() {
+        var li = document.getElementsByTagName('li')
+        for (var i = 0; i < li.length; i++) {
+            li[i].timer = null
+            li[i].onmouseover = function() {
+                startMove(this, 400)
+            }
+            li[i].onmouseout = function() {
+                startMove(this, 200)
+            }
+        }
+
+    }
+
+    // 上面已经定义了 使得每个定时器都分开
+    // var timer = null
+
+    function startMove(obj, target) {
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function() {
+            var speed = (target - obj.offsetWidth) / 8
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+            if (obj.offsetWidth == target) {
+                clearInterval(obj.timer)
+            } else {
+                obj.style.width = obj.offsetWidth + speed + 'px'
+            }
+        }, 30)
+    }
+</script>
+
+</html>
