@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .marquee {
+            overflow: hidden;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .list {
+            /* overflow: hidden; */
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 这个标签可实现 从右往左不断循环滚动 -->
+    <!-- <marquee behavior="" direction=""><img src="./imgs/tuzi.jpeg" alt=""></marquee> -->
+    <div class="marquee">
+        <div class="content">
+            <div class="list"><img src="./imgs/tuzi.jpeg" alt=""></div>
+            <div class="list"><img src="./imgs/tuzi.jpeg" alt=""></div>
+            <div class="list"><img src="./imgs/tuzi.jpeg" alt=""></div>
+        </div>
+    </div>
+    <button id="preBtn">
+        << pre </button> <button id="nextBtn"> next >>
+    </button>
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js">
+</script>
+<script>
+    // jq 挂载
+    $(() => {
+        console.log('页面元素加载完成后执行这里面的内容')
+            // 使用jq 选择需要的元素
+        var outerWidth = 600,
+            outerHeight = 400,
+            speed = 3,
+            initIndex = 0,
+            setTimeId = null,
+            transitionTime = 0.1
+        var $marquee = $('.marquee')
+        var $content = $marquee.find('.content')
+        var $list = $content.find('.list')
+        var listLength = $list.length
+        var contentWidth = outerWidth * listLength
+
+        // 获取样式表
+        var style = document.styleSheets
+
+        // 给最外层 $marquee 尺寸 上面需要声明使用的变量
+        $marquee.css({
+            "width": `${outerWidth}px`,
+            "height": `${outerHeight}px`
+        })
+
+        // 需要设定 list尺寸 
+        $list.css({
+            "width": `${outerWidth}px`,
+            "height": `${outerHeight}px`
+        })
+
+        // 计算得到 content尺寸
+        $content.css({
+                "width": `${contentWidth}px`,
+                "height": `${outerHeight}px`,
+                // 动画效果 
+                // "animation": `run ${speed * listLength}s linear infinite`
+            })
+            //运动
+            // style[0].insertRule(`
+            // @keyframes run{
+            //     100%{transform:translateX(-${contentWidth}px)}
+            // }`)
+
+        // 克隆 作用是不断连续的滚动  不会滚动一次就停止
+        var clone = $list.eq(0).clone()
+        $content.append(clone)
+
+        // 需要无限的轮询播放
+        function autoPlay() {
+            // 上面初始化这个地方使用 ++ 
+
+            setTimeId = setInterval(() => {
+                initIndex++
+                // 移动 content
+                $content.css({
+                    "transition": `transform ${transitionTime}s ease`,
+                    "transform": `translateX(-${outerWidth * initIndex}px)`
+                })
+                initIndex === listLength ? initIndex = 0 : ''
+            }, speed * 1000)
+
+
+        }
+        // autoPlay()
+
+        // 最后一张图片到第一张图片 切换有跳动效果  怎么处理？
+        $content[0].addEventListener('transitionend', () => {
+            $content.css({
+                "transition": `none`,
+                "transform": `translateX(-${outerWidth * initIndex}px)`
+            })
+        })
+        $('#preBtn').mouseenter(() => {
+            if (initIndex === 0) {
+                initIndex = listLength
+                $content.css({
+                    "transition": `none`,
+                    "transform": `translateX(-${outerWidth * initIndex}px)`
+                })
+            }
+        })
+        $('#preBtn').click(() => {
+            // console.log('pre clicked')
+            initIndex === 0 ? initIndex = listLength : ''
+            initIndex--
+            // 移动 content
+            $content.css({
+                "transition": `transform ${transitionTime}s ease`,
+                "transform": `translateX(-${outerWidth * initIndex}px)`
+            })
+
+        })
+
+        $('#nextBtn').click(() => {
+            // console.log('next clicked')
+            initIndex++
+            // 移动 content
+            $content.css({
+                "transition": `transform ${transitionTime}s ease`,
+                "transform": `translateX(-${outerWidth * initIndex}px)`
+            })
+            initIndex === listLength ? initIndex = 0 : ''
+        })
+    })
+</script>
+
+</html>
