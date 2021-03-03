@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(circle, #fff 30%, #ccc);
+  padding: 0 40px;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+}
+#grid .card {
+  background-color: #ccc;
+  width: 150px;
+  height: 150px;
+  transition: all 0.1s ease;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  cursor: pointer;
+}
+#grid .card:hover {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  z-index: 2;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+#grid .card:hover img {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+#grid .card .reflection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  transition: all 0.1s ease;
+  opacity: 0;
+  mix-blend-mode: soft-light;
+}
+#grid .card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: grayscale(0.65);
+          filter: grayscale(0.65);
+  transition: all 0.3s ease;
+}
