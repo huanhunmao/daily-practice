@@ -1,65 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        ul,
-        li {
-            list-style: none;
-        }
-        
-        li {
-            width: 200px;
-            height: 100px;
-            background-color: yellow;
-            margin-bottom: 20px;
-        }
+      ul,
+      li {
+        list-style: none;
+      }
+
+      li {
+        width: 200px;
+        height: 100px;
+        background-color: yellow;
+        margin-bottom: 20px;
+        border: 4px solid #000;
+        opacity: 0.3;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+      <ul>
+        <li id="li1"></li>
+        <li id="li2"></li>
+        <!-- <li></li> -->
+      </ul>
     </div>
-</body>
+  </body>
 
-<script>
-    window.onload = function() {
-        var li = document.getElementsByTagName('li')
-        for (var i = 0; i < li.length; i++) {
-            li[i].timer = null
-            li[i].onmouseover = function() {
-                startMove(this, 400)
-            }
-            li[i].onmouseout = function() {
-                startMove(this, 200)
-            }
-        }
+  <script>
+    window.onload = function () {
+      var li1 = document.getElementById("li1");
+      var li2 = document.getElementById("li2");
 
+      li1.onmouseover = function () {
+        startMove(this, "opacity", 100);
+      };
+      li1.onmouseout = function () {
+        startMove(this, "opacity", 30);
+      };
+    };
+
+    // 这个是改变样式的封装方法
+    // getStyle
+    function getStyle(obj, attr) {
+      // ie 浏览器
+      if (obj.currentStyle) {
+        return obj.currentStyle[attr];
+      } else {
+        // 其他浏览器
+        return getComputedStyle(obj, false)[attr];
+      }
     }
 
     // 上面已经定义了 使得每个定时器都分开
     // var timer = null
+    var alpha = 30;
+    function startMove(obj, attr, target) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function () {
+        var icur = 0;
+        if (attr == "opacity") {
+          icur = Math.round(Math.floor(obj, attr));
+        } else {
+          icur = parseInt(getStyle(obj, attr));
+        }
 
-    function startMove(obj, target) {
-        clearInterval(obj.timer)
-        obj.timer = setInterval(function() {
-            var speed = (target - obj.offsetWidth) / 8
-            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
-            if (obj.offsetWidth == target) {
-                clearInterval(obj.timer)
-            } else {
-                obj.style.width = obj.offsetWidth + speed + 'px'
-            }
-        }, 30)
+        var speed = (target - icur) / 8;
+        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+        if (icur == target) {
+          clearInterval(obj.timer);
+        } else {
+          if (attr == "opacity") {
+            //ie
+            // obj.style.filter = "alpha(opacity:" + (icur + speed) + ")";
+            //
+            obj.style.opacity = icur + speed;
+          } else {
+            obj.style[attr] = icur + speed + "px";
+          }
+        }
+      }, 30);
     }
-</script>
-
+  </script>
 </html>
