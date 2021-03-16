@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+            color: #333;
+        }
+        
+        section {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        
+        label {
+            background: #eee;
+            border: 1px solid #ddd;
+            padding: .7em 1em;
+            cursor: pointer;
+            z-index: 1;
+            margin-left: -1px;
+        }
+        
+        label:first-of-type {
+            margin-left: 0;
+        }
+        
+        div {
+            width: 100%;
+            margin-top: -1px;
+            padding: 1em;
+            border: 1px solid #ddd;
+            -webkit-order: 1;
+            order: 1;
+        }
+        
+        input[type=radio],
+        div {
+            display: none;
+        }
+        
+        input[type=radio]:checked+label {
+            background: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        
+        input[type=radio]:checked+label+div {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+
+        <input id="tab-one" type="radio" name="grp" checked="checked">
+        <label for="tab-one">Tab One</label>
+        <div>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        </div>
+
+        <input id="tab-two" type="radio" name="grp">
+        <label for="tab-two">Tab Two</label>
+        <div>
+            <img src="http://sbarthel.github.io/images/img/berg.JPG" alt="mountain">
+        </div>
+
+        <input id="tab-three" type="radio" name="grp">
+        <label for="tab-three">Tab Three</label>
+        <div>
+            ... no fixed height for tabbed area!
+        </div>
+
+    </section>
+</body>
+
+</html>

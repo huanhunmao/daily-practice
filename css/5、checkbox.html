@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .checkbox input:checked+label {
+            background-image: url(./红色对勾.jpeg);
+            background-size: 20px 20px;
+        }
+        
+        .checkbox input+label {
+            background: url(./黑色对勾.jpeg) no-repeat;
+            background-size: 20px 20px;
+            padding-left: 20px;
+        }
+        /* 将前面的input 框隐藏起来 */
+        
+        input {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkbox">
+        <input type="checkbox" id="check">
+        <label for="check">测试选择框</label>
+    </div>
+</body>
+
+</html>
