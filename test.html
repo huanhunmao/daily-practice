@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    .ani-box {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .ani {
+      width: 100px;
+      height: 100px;
+      background: #000;
+      animation: a 2s linear;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes a {
+      0% {
+        top: 0;
+      }
+      100% {
+        top: calc(100% - 100px);
+      }
+    }
+  </style>
+
+  <body>
+    <div class="ani-box">
+      <div class="ani"></div>
+    </div>
+  </body>
+</html>
