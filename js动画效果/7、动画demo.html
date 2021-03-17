@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            /* width: 100px;
+            height: 100px; */
+            /* background: pink; */
+            /* position: absolute;
+            top: 0;
+            left: 0; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    function addLoadEvent(func) {
+        var oldonload = window.onload
+        if (typeof window.onload != 'function') {
+            window.onload = func
+        } else {
+            window.onload = function() {
+                oldonload()
+                func()
+            }
+        }
+    }
+    addLoadEvent(position)
+    addLoadEvent(move)
+    addLoadEvent(change)
+
+    function position() {
+        var b1 = document.getElementById('box')
+        b1.style.position = 'absolute'
+        b1.style.left = '20px'
+        b1.style.top = '20px'
+        b1.style.width = '50px'
+        b1.style.height = '50px'
+        b1.style.backgroundColor = 'pink'
+    }
+
+    function move() {
+        var b1 = document.getElementById('box')
+        var xpos = parseInt(b1.style.left)
+        var ypos = parseInt(b1.style.top)
+
+        if (xpos == 180 && ypos == 180) {
+            return true
+        }
+        if (xpos < 180) {
+            xpos++
+
+        }
+        if (xpos > 180) {
+            xpos--
+        }
+        if (ypos < 180) {
+            ypos++
+
+        }
+        if (ypos > 180) {
+            ypos--
+        }
+        b1.style.left = xpos + 'px'
+        b1.style.top = ypos + 'px'
+            // b1.style.width = wpos + 'px'
+            // b1.style.height = hpos + 'px'
+        moveMent = setTimeout('move()', 10)
+
+    }
+
+    function change() {
+        var b1 = document.getElementById('box')
+        var wpos = parseInt(b1.style.width)
+            // console.log(wpos)
+        var hpos = parseInt(b1.style.height)
+        if (wpos == 200 && hpos == 200) {
+            return true
+        }
+
+        if (wpos < 200) {
+            wpos++
+        }
+        if (wpos > 200) {
+            wpos--
+        }
+        if (hpos < 200) {
+            hpos++
+        }
+        if (hpos > 200) {
+            hpos--
+        }
+        b1.style.width = wpos + 'px'
+        b1.style.height = hpos + 'px'
+        moveMent1 = setTimeout('change()', 10)
+        console.log('change 执行')
+    }
+    // moveMent = setTimeout('move()', 10)
+
+
+
+    // console.log('move 执行')
+</script>
+
+</html>

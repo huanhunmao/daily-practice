@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图片的缓慢缩放</title>
+</head>
+<script>
+    window.onload = function() {
+        var btn_big = document.getElementById("big");
+        var btn_small = document.getElementById("small");
+        var pic = document.getElementById("pic");
+        //缓慢放大
+        if (document.documentElement.scrollTop > 1703) {
+            pic.style.width = 100 + 'vw';
+            pic.style.height = 900 + 'px'
+
+            big()
+        }
+
+
+        //缓慢缩小
+        if (document.documentElement.scrollTop < 2437) {
+            function small() {
+                var width = parseInt(pic.style.width);
+                var count = 0;
+                if (width == 10) {
+                    alert("图片已最小!!");
+                    return false;
+                }
+                console.log(width);
+                var timer2 = setInterval(function() {
+                    count++;
+                    width--;
+                    pic.style.width = width + "%";
+                    if (count == 10) {
+                        clearInterval(timer2);
+                    } else if (width < 10) {
+                        btn_small.onclick = null;
+                    }
+                }, 13);
+            }
+            small()
+        }
+
+    }
+</script>
+<style>
+    #pic {
+        width: 20%;
+    }
+</style>
+
+<body>
+    <div id="pic" style="width: 20%">
+        <img src="./imgs/container3_0_bg.png" style="width:100%;">
+    </div>
+
+    <div class="scale">
+        <button id="big">放大</button> <button id="small">缩小</button>
+    </div>
+</body>
