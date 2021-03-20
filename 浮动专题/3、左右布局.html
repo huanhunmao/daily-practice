@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main {
+            width: 1080px;
+            margin: 0 auto;
+            min-height: 50px;
+            background: yellow;
+        }
+        
+        .wrap {
+            float: left;
+            width: 100%;
+            min-height: 60px;
+            background: blue;
+        }
+        
+        .edge {
+            position: relative;
+            float: left;
+            top: 0;
+            width: 350px;
+            min-height: 20px;
+            margin-left: -350px;
+            background: red;
+        }
+        
+        .content {
+            margin-right: 352px;
+            min-height: 30px;
+            background: gray;
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .edge {
+                display: block;
+                margin: 20px 0;
+                width: 100%;
+            }
+            .content {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="wrap">
+            <div class="content">
+
+            </div>
+        </div>
+        <div class="edge"></div>
+    </div>
+</body>
+
+</html>
