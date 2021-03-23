@@ -1,0 +1,30 @@
+
+
+// 这个模块主要展示怎么使用 scss mixin模块
+body{
+    padding: 0;
+    margin: 0;
+}
+
+$fontSize:12px;
+$bgColor:red;
+// 需要注意这个地方是固定的写法 @mixin开头 + 名字(定义变量)
+@mixin box($fontSize){
+    font-size: $fontSize;
+    border: 1px solid pink;
+    border-radius: 4px;
+}
+
+.wrapper{
+    background: lighten($bgColor,40%);
+    .nav{
+        // 第二个需要注意的地方是使用时 需要用 @include
+        @include box($fontSize)
+    }
+    .content{
+        @include box($fontSize + 3px);
+        &:hover{
+            background: $bgColor;
+        }
+    }
+}

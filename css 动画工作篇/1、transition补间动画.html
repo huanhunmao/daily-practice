@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 可以实现hover 元素之后 逐渐变化 */
+        .container{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            /* transition: width 1s,background 2s ; */
+            /* transition:  all 1s 需要写在 timing-function 上面才能生效 */
+            transition:  all 1s;
+            transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+            
+           
+        }
+        .container:hover{
+            width: 400px;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+</html>

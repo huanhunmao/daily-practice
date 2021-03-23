@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background: url(./猎豹循环跑动图.png) no-repeat;
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+            border: 1px solid black;
+        }
+        div:hover{
+            animation: run 1s linear infinite ;
+            /* 这个非常关键  这个 steps 里面的数量定义的是两个关键帧 动画之间有几个场景*/
+            animation-timing-function: steps(1);
+        }
+
+        @keyframes run {
+            0%{
+            background-position: 0 0;
+        }
+        12.5%{
+            background-position: -100px 0;
+        }
+        25%{
+            background-position: -200px 0;
+        }
+        37.5%{
+            background-position: -300px 0;
+        }
+        50%{
+            background-position: 0 -100px;
+        }
+        62.5%{
+            background-position: -100px -100px;
+        }
+        75%{
+            background-position: -200px -100px;
+        }
+        87.5%{
+            background-position: -300px -100px;
+        }
+        100%{
+            background-position: 0 0;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+    </div>
+</body>
+</html>

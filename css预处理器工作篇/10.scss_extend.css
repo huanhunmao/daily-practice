@@ -1,0 +1,13 @@
+body {
+  padding: 0;
+  margin: 0; }
+
+.box, .wrapper .nav, .wrapper .content {
+  font-size: 12px;
+  border: 1px solid pink;
+  border-radius: 4px; }
+
+.wrapper {
+  background: #ffcccc; }
+  .wrapper .content:hover {
+    background: red; }

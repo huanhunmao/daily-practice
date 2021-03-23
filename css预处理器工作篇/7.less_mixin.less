@@ -1,0 +1,38 @@
+
+
+@fontSize:12px;
+@bgColor:red;
+
+// 实际使用场景下 会使用多个变量定义
+// 比如
+@headFontSize:16px;
+@contentFontSize:12px;
+@footerFontSize:9px;
+@textColor:#333;
+@linkColor:#f60;
+
+
+// 假设这是一个公共的样式 如何处理在nav和content中引用这个问题
+// 并且需要注意 如果box后面没有括号 编译之后是会展示出来的 
+.box(@fontSize){
+    font-size: @fontSize;
+    border: 1px solid pink;
+    border-radius: 4px;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.wrapper{
+    background: lighten(@bgColor,40%);
+    .nav{
+        font-size: @fontSize;
+        .box(@fontSize)
+    }
+    .content{
+        .box(@fontSize + 3px);
+        &:hover{
+            background: @bgColor;
+        }
+    }
+}

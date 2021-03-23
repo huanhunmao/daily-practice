@@ -1,0 +1,36 @@
+.col-1 {
+  width: 1000px / 12*1;
+}
+.col-2 {
+  width: 1000px / 12*2;
+}
+.col-3 {
+  width: 1000px / 12*3;
+}
+.col-4 {
+  width: 1000px / 12*4;
+}
+.col-5 {
+  width: 1000px / 12*5;
+}
+.col-6 {
+  width: 1000px / 12*6;
+}
+.col-7 {
+  width: 1000px / 12*7;
+}
+.col-8 {
+  width: 1000px / 12*8;
+}
+.col-9 {
+  width: 1000px / 12*9;
+}
+.col-10 {
+  width: 1000px / 12*10;
+}
+.col-11 {
+  width: 1000px / 12*11;
+}
+.col-12 {
+  width: 1000px / 12*12;
+}

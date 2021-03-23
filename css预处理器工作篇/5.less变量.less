@@ -1,0 +1,30 @@
+
+
+@fontSize:12px;
+@bgColor:red;
+
+// 实际使用场景下 会使用多个变量定义
+// 比如
+@headFontSize:16px;
+@contentFontSize:12px;
+@footerFontSize:9px;
+@textColor:#333;
+@linkColor:#f60;
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper{
+    background: lighten(@bgColor,40%);
+    .nav{
+        font-size: @fontSize;
+    }
+    .content{
+        font-size: @fontSize + 2px;
+        &:hover{
+            background: @bgColor;
+        }
+    }
+}

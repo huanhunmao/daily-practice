@@ -1,0 +1,10 @@
+.wrap .p1 {
+  width: 100px;
+  height: 100px;
+}
+.wrap .p1 span {
+  color: #fff;
+}
+.wrap:hover {
+  background: pink;
+}

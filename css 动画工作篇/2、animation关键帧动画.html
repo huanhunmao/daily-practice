@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            animation: run 2s;
+            /* 方向 默认正向  reverse为反向 */
+            /* animation-direction: reverse; */
+            /* 动画停在最终的位置 默认为 backwards 会回到初始位置 */
+            /* animation-fill-mode: forwards; */
+            /* 动画循环次数 infinite 无限循环 */
+            /* animation-iteration-count: infinite; */
+            /* 播放状态 pasused为暂停播放状态 */
+            /* animation-play-state: paused; */
+        }
+
+        @keyframes run {
+            0%{
+                width: 100px;
+            }
+            100%{
+                width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+
+// 这个模块主要展示怎么使用 scss extend模块
+body{
+    padding: 0;
+    margin: 0;
+}
+
+$fontSize:12px;
+$bgColor:red;
+.box{
+    font-size: $fontSize;
+    border: 1px solid pink;
+    border-radius: 4px;
+}
+
+.wrapper{
+    background: lighten($bgColor,40%);
+    .nav{
+        // 第二个需要注意的地方是使用时 需要用 @extend
+        @extend .box
+    }
+    .content{
+        @extend .box;
+        &:hover{
+            background: $bgColor;
+        }
+    }
+}

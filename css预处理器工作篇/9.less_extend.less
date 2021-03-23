@@ -1,0 +1,37 @@
+
+
+@fontSize:12px;
+@bgColor:red;
+
+// .box 被两个地方引用会产生重复代码 这个问题如何处理 ？
+// 1、将公用的代码放在一起 
+// .nav,.content{xxxxxxxx}
+// 注意.wrapper .nav两个分开写 表示父子级的关系  写一起表示同级关系
+// .box,.wrapper .nav,.wrapper .content{
+//     border: 1px solid pink;
+//     border-radius: 4px;
+// }
+
+// 注意！！！这个地方要使用 extend 不要使用参数
+// 否则报错 ' .box' has no matches
+.box{
+    font-size: @fontSize;
+    border: 1px solid pink;
+    border-radius: 4px;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.wrapper{
+    background: lighten(@bgColor,40%);
+    .nav:extend(.box){
+        color: #333
+    }
+    .content{
+        &:extend(.box);
+        &:hover{
+            background: @bgColor;
+        }
+    }
+}
