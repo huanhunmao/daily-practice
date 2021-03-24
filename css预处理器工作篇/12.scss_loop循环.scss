@@ -2,13 +2,21 @@
 
 // 对比一下和less的区别 使用了关键字 mixin if include 
 // 并且将条件判断写在了内部
-@mixin gen-col($n){
-    @if $n > 0 {
-        @include gen-col($n - 1);
-        .col-#{$n}{
-            width: 1000px/12*$n;
-        }
+// @mixin gen-col($n){
+//     @if $n > 0 {
+//         @include gen-col($n - 1);
+//         .col-#{$n}{
+//             width: 1000px/12*$n;
+//         }
+//     }
+// }
+
+// @include gen-col(12);
+
+// scss不傻 可使用for循环
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        width: 1000px/12*$i;
     }
 }
-
-@include gen-col(12);
