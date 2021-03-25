@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.弹窗modal</title>
+    <link rel="stylesheet" href="./bootstrap-4.6.0-dist/css/bootstrap.css" />
+    <script src="./jquery-3.2.1.min.js"></script>
+    <script src="./bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+  </head>
+  <body>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#staticBackdrop"
+    >
+      弹窗1
+    </button>
+
+    <!-- 第二个按钮 点击之后不会产生弹窗效果 -->
+    <button id="showModal2" class="btn btn-primary">弹窗2</button>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    //   使弹窗2 起作用
+    $("#showModal2").click(function () {
+      // 让弹窗出现
+      $("#staticBackdrop").modal();
+      console.log("执行");
+    });
+  </script>
+</html>
