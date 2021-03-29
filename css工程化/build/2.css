@@ -1,0 +1,6 @@
+
+
+.box{
+    -moz-box-sizing: 0 0 3px rgba(255,255,255,.3);
+         box-sizing: 0 0 3px rgba(255,255,255,.3);
+}

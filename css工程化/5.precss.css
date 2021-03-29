@@ -1,0 +1,7 @@
+
+$bg:red;
+$colomn:100px;
+.meno{
+    width: clac(4* $colomn);
+    background:$bg;
+}

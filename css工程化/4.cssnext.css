@@ -1,0 +1,17 @@
+
+
+:root{
+    --clg:pink;
+    --like-theme:{
+        color: salmon;
+        background: seashell;
+    }
+}
+
+
+a{
+    color: var(--clg);
+}
+.like{
+    @apply --like-theme;
+}

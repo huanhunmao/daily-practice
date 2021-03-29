@@ -1,5 +1,13 @@
 {
   "devDependencies": {
-    "postcss-cli": "^8.3.1"
+    "autoprefixer": "^10.2.5",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^11.0.0"
+  },
+  "dependencies": {
+    "cssnano": "^4.1.10",
+    "cssnext": "^1.8.4",
+    "postcss": "^8.2.8",
+    "postcss-cssnext": "^3.1.0"
   }
 }
