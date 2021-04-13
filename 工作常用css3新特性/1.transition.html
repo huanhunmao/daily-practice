@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .btn1,
+      .btn2 {
+        height: 30px;
+      }
+      .btn1:hover {
+        background: aqua;
+        /* 过渡效果 显得自然一些 */
+        transition: all, 1s;
+        /* transition: width, 0.5s, ease, 0.5s; */
+      }
+      .btn2:hover {
+        background: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn1">this is one</button>
+    <button class="btn2">this is two</button>
+  </body>
+</html>

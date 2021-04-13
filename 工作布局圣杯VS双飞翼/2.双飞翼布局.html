@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>双飞翼布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .header,
+      .footer {
+        height: 100px;
+        line-height: 100px;
+        background-color: green;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      .footer {
+        background-color: goldenrod;
+      }
+
+      .container {
+        overflow: hidden;
+      }
+
+      .left,
+      .middle,
+      .right {
+        float: left;
+        min-height: 130px;
+        word-break: break-all;
+      }
+
+      .left {
+        margin-left: -100%;
+        width: 200px;
+        background-color: red;
+      }
+
+      .right {
+        margin-left: -220px;
+        width: 220px;
+        background-color: green;
+      }
+
+      .middle {
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+      }
+
+      .inner {
+        margin: 0 220px 0 200px;
+        min-height: 130px;
+        background: blue;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">header</div>
+    <div class="container">
+      <div class="middle">
+        <div class="inner">
+          <h4>middle</h4>
+          <p>
+            middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+            middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+            middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+            middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+            middlemiddlemiddlemiddlemiddlemiddlemiddlemiddle
+            middlemiddlemiddlemiddlemiddle
+          </p>
+        </div>
+      </div>
+      <div class="left">
+        <h4>left</h4>
+        <p>
+          leftleftleftleftleftleftleftleftleftleftleftleft
+          leftleftleftleftleftleftleftleftleftleftleftleft
+          leftleftleftleftleftleftleftleftleftleftleftleft
+        </p>
+      </div>
+      <div class="right">
+        <h4>right</h4>
+        <p>
+          rightrightrightrightrightrightrightrightrightright
+          rightrightrightrightrightrightrightrightrightright
+          rightrightrightrightrightrightright
+        </p>
+      </div>
+    </div>
+    <div class="footer">footer</div>
+  </body>
+</html>
