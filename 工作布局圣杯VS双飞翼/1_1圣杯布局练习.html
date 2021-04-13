@@ -1,0 +1,60 @@
+<!-- 左边 有点缺陷 展示是空白内容 原因当前未知  不过不影响 中间自适应的展示 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圣杯布局练习</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .header,
+      .footer {
+        width: 100vw;
+        background-color: pink;
+        height: 30px;
+        text-align: center;
+      }
+      .container {
+        padding: 0 220px 0 200px;
+        overflow: hidden;
+      }
+      .middle {
+        width: 100%;
+        background-color: seagreen;
+      }
+      .left,
+      .middle,
+      .right {
+        position: relative;
+        float: left;
+        text-align: center;
+        min-height: 30px;
+      }
+      .left {
+        margin-left: -100%;
+        left: -200px;
+        width: 200px;
+        background-color: red;
+      }
+      .right {
+        margin-left: -220px;
+        width: 220px;
+        right: -220px;
+        background-color: salmon;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header"><p>这是头部</p></div>
+    <div class="container">
+      <div class="left"><p>这是左边</p></div>
+      <div class="middle"><p>这是中间</p></div>
+      <div class="right"><p>这是右边</p></div>
+    </div>
+    <div class="footer"><p>这是底部</p></div>
+  </body>
+</html>
