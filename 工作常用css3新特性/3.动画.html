@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动画</title>
+    <style>
+      .d1 {
+        width: 100px;
+        height: 100px;
+        background: pink;
+        position: relative;
+        /* animation: myMove 2s linear alternate infinite; */
+        animation: myMove 2s linear alternate;
+        /* forwards 表示动画结束的最后一帧 */
+        animation-fill-mode: forwards;
+      }
+
+      /* 需要定义动画的效果  注意from{} to{} */
+      @keyframes myMove {
+        from {
+          left: 0px;
+        }
+        to {
+          left: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d1"></div>
+  </body>
+</html>

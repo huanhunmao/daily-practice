@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .center {
+      margin: 80px auto;
+    }
+
+    .so {
+      display: block;
+      width: 500px;
+      height: 156px;
+      background: #ffffff;
+    }
+    .so .inner {
+      width: 500px;
+      height: 156px;
+      position: absolute;
+    }
+    .so .inner * {
+      position: absolute;
+      animation-iteration-count: infinite;
+      animation-duration: 3.5s;
+    }
+    .so .inner .name {
+      position: absolute;
+      font-size: 54px;
+      left: 130px;
+      top: 95px;
+    }
+    .so .inner .name .b {
+      font-weight: bold;
+    }
+    .so .inner .stack-box {
+      top: 100px;
+      width: 115px;
+      height: 56px;
+    }
+    .so .inner .box {
+      width: 115px;
+      height: 56px;
+      left: 0px;
+    }
+    .so .inner .box div {
+      background: #bcbbbb;
+    }
+    .so .inner .box .bottom {
+      bottom: 0px;
+      left: 0px;
+      width: 115px;
+      height: 12px;
+    }
+    .so .inner .box .left {
+      bottom: 11px;
+      left: 0px;
+      width: 12px;
+      height: 34px;
+    }
+    .so .inner .box .right {
+      bottom: 11px;
+      left: 103px;
+      width: 12px;
+      height: 34px;
+    }
+    .so .inner .box .top {
+      top: 0px;
+      left: 0px;
+      width: 0;
+      height: 12px;
+    }
+    .so .inner .stack {
+      left: 22px;
+      top: 22px;
+    }
+    .so .inner .stack .inner-item {
+      background: #f48024;
+      width: 71px;
+      height: 12px;
+    }
+    .so .inner .stack .item {
+      transition: transform 0.3s;
+      width: 291px;
+    }
+    .so .inner .stack div:nth-child(1) {
+      transform: rotate(0deg);
+    }
+    .so .inner .stack div:nth-child(2) {
+      transform: rotate(12deg);
+    }
+    .so .inner .stack div:nth-child(3) {
+      transform: rotate(24deg);
+    }
+    .so .inner .stack div:nth-child(4) {
+      transform: rotate(36deg);
+    }
+    .so .inner .stack div:nth-child(5) {
+      transform: rotate(48deg);
+    }
+    .so .inner .box {
+      animation-name: box;
+    }
+    .so .inner .box .top {
+      animation-name: box-top;
+    }
+    .so .inner .box .left {
+      animation-name: box-left;
+    }
+    .so .inner .box .right {
+      animation-name: box-right;
+    }
+    .so .inner .box .bottom {
+      animation-name: box-bottom;
+    }
+    .so .inner .stack-box {
+      animation-name: stack-box;
+    }
+    .so .inner .stack {
+      animation-name: stack;
+    }
+    .so .inner .stack .inner-item {
+      animation-name: stack-items;
+    }
+    .so .inner .stack .item:nth-child(1) {
+      animation-name: stack-item-1;
+    }
+    .so .inner .stack .item:nth-child(2) {
+      animation-name: stack-item-2;
+    }
+    .so .inner .stack .item:nth-child(3) {
+      animation-name: stack-item-3;
+    }
+    .so .inner .stack .item:nth-child(4) {
+      animation-name: stack-item-4;
+    }
+    .so .inner .stack .item:nth-child(5) {
+      animation-name: stack-item-5;
+    }
+    @keyframes stack {
+      0% {
+        left: 22px;
+      }
+      15% {
+        left: 22px;
+      }
+      30% {
+        left: 52px;
+      }
+      50% {
+        left: 52px;
+      }
+      80% {
+        left: 22px;
+      }
+    }
+    @keyframes stack-item-1 {
+      0% {
+        transform: rotate(12deg * 0);
+      }
+      10% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      54% {
+        transform: rotate(0deg);
+      }
+      92% {
+        transform: rotate(12deg * 0);
+      }
+    }
+    @keyframes stack-item-2 {
+      0% {
+        transform: rotate(12deg * 1);
+      }
+      10% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      54% {
+        transform: rotate(0deg);
+      }
+      92% {
+        transform: rotate(12deg * 1);
+      }
+    }
+    @keyframes stack-item-3 {
+      0% {
+        transform: rotate(12deg * 2);
+      }
+      10% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      54% {
+        transform: rotate(0deg);
+      }
+      92% {
+        transform: rotate(12deg * 2);
+      }
+    }
+    @keyframes stack-item-4 {
+      0% {
+        transform: rotate(12deg * 3);
+      }
+      10% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      54% {
+        transform: rotate(0deg);
+      }
+      92% {
+        transform: rotate(12deg * 3);
+      }
+    }
+    @keyframes stack-item-5 {
+      0% {
+        transform: rotate(12deg * 4);
+      }
+      10% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      54% {
+        transform: rotate(0deg);
+      }
+      92% {
+        transform: rotate(12deg * 4);
+      }
+    }
+    @keyframes stack-items {
+      0% {
+        width: 71px;
+      }
+      15% {
+        width: 71px;
+      }
+      30% {
+        width: 12px;
+      }
+      50% {
+        width: 12px;
+      }
+      80% {
+        width: 71px;
+      }
+    }
+    @keyframes box {
+      0% {
+        left: 0;
+      }
+      15% {
+        left: 0;
+      }
+      30% {
+        left: 30px;
+      }
+      50% {
+        left: 30px;
+      }
+      80% {
+        left: 0;
+      }
+    }
+    @keyframes box-top {
+      0% {
+        width: 0;
+      }
+      6% {
+        width: 0;
+      }
+      15% {
+        width: 115px;
+      }
+      30% {
+        width: 56px;
+      }
+      50% {
+        width: 56px;
+      }
+      59% {
+        width: 0;
+      }
+    }
+    @keyframes box-bottom {
+      0% {
+        width: 115px;
+      }
+      15% {
+        width: 115px;
+      }
+      30% {
+        width: 56px;
+      }
+      50% {
+        width: 56px;
+      }
+      80% {
+        width: 115px;
+      }
+    }
+    @keyframes box-right {
+      15% {
+        left: 103px;
+      }
+      30% {
+        left: 44px;
+      }
+      50% {
+        left: 44px;
+      }
+      80% {
+        left: 103px;
+      }
+    }
+    @keyframes stack-box {
+      0% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(0deg);
+      }
+      40% {
+        transform: rotate(135deg);
+      }
+      50% {
+        transform: rotate(135deg);
+      }
+      83% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <body>
+    <div class="so center">
+      <div class="inner">
+        <div class="stack-box">
+          <div class="stack">
+            <div class="item">
+              <div class="inner-item"></div>
+            </div>
+            <div class="item">
+              <div class="inner-item"></div>
+            </div>
+            <div class="item">
+              <div class="inner-item"></div>
+            </div>
+            <div class="item">
+              <div class="inner-item"></div>
+            </div>
+            <div class="item">
+              <div class="inner-item"></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="bottom"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="top"></div>
+          </div>
+        </div>
+        <div class="name">stack<span class="b">overflow</span></div>
+      </div>
+    </div>
+  </body>
+</html>

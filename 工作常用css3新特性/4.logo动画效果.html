@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>logo动画效果</title>
+    <link rel="stylesheet" href="reset.css" />
+  </head>
+  <style>
+    .logo-box {
+      width: 600px;
+      margin: 100px auto;
+      font-size: 0;
+      position: relative;
+    }
+    .logo-box div {
+      display: inline-block;
+    }
+    .logo-box .logo-text {
+      margin-left: 10px;
+    }
+    .logo-box .logo1 {
+      animation: logo1 1s ease-in 2s;
+      animation-fill-mode: backwards;
+    }
+    .logo-box .logo-text {
+      animation: logoText 1s ease-in 3s;
+      animation-fill-mode: backwards;
+    }
+    .logo-box .logo2 {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      animation: logo2-middle 2s ease-in;
+    }
+    .logo-box .logo2 img {
+      animation: logo2-line 2s linear;
+    }
+    /* 这是个旋转动画 */
+    @keyframes logo1 {
+      0% {
+        transform: rotate(180deg);
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+    }
+    /* 第三个图片 */
+    @keyframes logoText {
+      0% {
+        transform: translateX(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    /* 第二个 */
+    @keyframes logo2-line {
+      0% {
+        transform: translateX(200px);
+      }
+      25% {
+        transform: translateX(150px);
+      }
+      50% {
+        transform: translateX(100px);
+      }
+      75% {
+        transform: translateX(50px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes logo2-middle {
+      0% {
+        transform: translateY(0);
+      }
+      25% {
+        transform: translateY(-100px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      75% {
+        transform: translateY(-50px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <body>
+    <div class="logo-box">
+      <div class="logo1"><img src="imgs/logo2.png" /></div>
+      <div class="logo2"><img src="imgs/logo1.png" /></div>
+      <div class="logo-text"><img src="imgs/logo3.png" /></div>
+    </div>
+
+    <div class="wraper"><div class="item"></div></div>
+  </body>
+</html>
