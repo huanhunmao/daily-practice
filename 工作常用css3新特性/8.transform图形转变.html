@@ -5,6 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>图形变化</title>
+    <style>
+    div{
+    width: 100px;
+    height: 100px;
+    background: pink;
+    /*自身旋转30度*/
+    /*transform:rotate(30deg);*/
+
+    /*距离x y 分别是 30px 30px */
+    /*transform:translate(30px,30px);*/
+
+    /*放大缩小*/
+    /*transform:scale(.8);*/
+
+/*skew() 函数定义了一个元素在二维平面上的倾斜转换*/
+    /*transform: skew(10deg,10deg);*/
+
+    /*内容竖直方向倒过来了*/
+    /*transform:rotateX(180deg);*/
+    }
+    div:hover{
+    /*3D 变换*/
+        transform:rotate3d(10,10,10,90deg);
+        /*这样 有个过渡时间*/
+        transition: all,1s;
+
+    }
+</style>
   </head>
-  <body></body>
+  <body>
+  <div>test</div>
+</body>
 </html>

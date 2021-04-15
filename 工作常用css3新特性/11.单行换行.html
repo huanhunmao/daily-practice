@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>单行换行</title>
+    <style>
+    div{
+       width:200px;
+          border:1px solid #000000;
+          /*超出部分隐藏掉*/
+          overflow:hidden;
+          /*不换行*/
+          white-space:nowrap;
+          /*超出变成省略号*/
+          text-overflow:ellipsis;
+    }
+</style>
+      </head>
+      <body>
+      <div> test This is some long text that will not fit in the box test This is some long text that will not fit in the box</div>
+
+    </body>
+    </html>

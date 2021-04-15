@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>多行换行</title>
+    <style>
+    div{
+          width:200px;
+            margin:0 auto;
+            overflow : hidden;
+            border:1px solid #ccc;
+            text-overflow: ellipsis;
+            padding:0 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height:30px;
+            height:60px;
+    }
+</style>
+      </head>
+      <body>
+      <div> test This is some long text that will not fit in the box test This is some long text that will not fit in the box</div>
+
+    </body>
+    </html>
