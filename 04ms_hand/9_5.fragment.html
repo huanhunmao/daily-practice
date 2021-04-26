@@ -1,0 +1,32 @@
+<!--  一次 插入多个节点 考虑性能 // 创建 临时 文档片段 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul id="list "></ul>
+    </div>
+  </body>
+  <script>
+    // 这是一个演示过程   有点问题 页面无法显示 还在查找原因
+    var listnode = document.getElementById("list");
+    // 创建临时文档片段   并未插入到 DOM 树中
+    var frag = document.createDocumentFragment();
+
+    // 执行插入
+    for (var i = 0; i < 10; i++) {
+      const li = document.createElement("li");
+      li.innerHTML = "List items" + i;
+      frag.appendChild(li);
+    }
+
+    //上面循环都完成后 再插入到 DOM中
+    listnode.appendChild(frag);
+  </script>
+</html>

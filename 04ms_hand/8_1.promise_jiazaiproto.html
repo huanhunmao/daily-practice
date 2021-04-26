@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 这一把纯属是 熟悉一下 练习敲一遍
+    function loadImg(src) {
+      const p = new Promise((resolve, reject) => {
+        const img = document.createElement("img");
+        img.onload = () => {
+          resolve(img);
+        };
+        img.onerror = () => {
+          const err = new Error("加载失败");
+          reject(err);
+        };
+        img.src = src;
+      });
+      return p;
+    }
+
+    //test
+    var url = "./imgs/猎豹.png";
+    loadImg(url)
+      .then((img) => {
+        console.log(img.width);
+        return img;
+      })
+      .then((img) => {
+        console.log(img.height);
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  </script>
+</html>

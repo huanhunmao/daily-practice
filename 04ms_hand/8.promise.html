@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 常考 promise 加载一张图片  需要 会比较容易写出来
+    function loadImg(src) {
+      const p = new Promise((resolve, reject) => {
+        const img = document.createElement("img");
+        img.onload = () => {
+          resolve(img);
+        };
+        img.onerror = () => {
+          const err = new Error("图片加载失败 ${src}");
+          reject(err);
+        };
+        img.src = src;
+      });
+      return p;
+    }
+
+    //test
+
+    const url = "./imgs/猎豹.png";
+    loadImg(url)
+      .then((img) => {
+        console.log(img.width); //658
+        return img;
+      })
+      .then((img) => {
+        console.log(img.height);
+      })
+      .catch((ex) => {
+        console.log("error"); //1170
+      });
+  </script>
+</html>
