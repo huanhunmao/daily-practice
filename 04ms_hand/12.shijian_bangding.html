@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #btn {
+        width: 100px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">btn</button>
+  </body>
+  <script>
+    var btn = document.getElementById("btn");
+    btn.addEventListener("click", function (e) {
+      console.log("clicked"); // clicked
+    });
+  </script>
+</html>
+
+<!-- 最基本的绑定点击事件 点击后 打印 clicked -->

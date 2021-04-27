@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="dc">test</div>
+  </body>
+  <script>
+    var dc = document.getElementById("dc");
+    dc.getAttribute("style");
+    dc.setAttribute("style", "font-size:60px;color:pink");
+
+    //并且可以加 class  当然也可以是多个 多个class写一起就行
+    dc.getAttribute("class");
+    dc.setAttribute("class", "fhj pishe mojia");
+  </script>
+</html>
+
+<!-- 这个例子演示  对dom元素 设置 字体大小为60px -->
+<!-- 需要注意 先写getAttribute  并且进行 set时 可以写多个属性进行set -->

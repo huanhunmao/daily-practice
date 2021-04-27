@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #btn,
+      #btn1 {
+        width: 100px;
+        height: 50px;
+        background-color: pink;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">点击</button>
+    <!-- <button id="btn1">第二个按钮</button> -->
+  </body>
+  <script>
+    // 先写通用的事件绑定函数
+    // 四个参数 元素 类型  代理绑定  函数
+    function bindEvent(elem, type, selector, fn) {
+      // 如果只有 三个参数 elem type fn 没有代理绑定时 selector
+      if (fn == null) {
+        fn = selector;
+        selector = null;
+      }
+
+      //四个 参数存在的情况下
+      elem.addEventListener(type, (event) => {
+        const target = event.target;
+        if (selector) {
+          // 限制选择
+          if (target.matches(selector)) {
+            fn.call(target, event);
+          }
+        } else {
+          fn.call(target, event);
+        }
+      });
+    }
+
+    var btn = document.getElementById("btn");
+    // var btn1 = document.getElementById("btn1");
+    // 注意这个地方 使用普通函数比较好
+    bindEvent(btn, "click", function (event) {
+      event.preventDefault();
+      alert(this.innerHTML); // 可以 打印出 btn按钮内容
+    });
+
+    // 如果写箭头函数 需要将this换成 event.target
+    // bindEvent(btn, "click", (event) => {
+    //   event.preventDefault();
+    //   alert(event.target.innerHTML);
+    // });
+  </script>
+</html>
+
+<!-- 这是完整的通用事件绑定函数 -->
+<!-- 需要完整 手写！！！ -->
