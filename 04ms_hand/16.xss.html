@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <!-- 这个一个自动的转化 script 左右尖括号  左尖括号-->&lt; 右尖括号-->&gt; -->
+  <script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
+  <script>
+    // apply function filterXSS in the same way
+    var html = filterXSS('<script>alert("xss");</scr' + "ipt>");
+    alert(html);
+  </script>
+</html>

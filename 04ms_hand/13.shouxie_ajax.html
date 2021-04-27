@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  </head>
+  <body></body>
+  <script>
+    // 这里展示的是如何手写 ajax 结合 promise使用 效果更佳
+    // 测试部分 使用 jq + jsonp 解除同源限制  非常nice
+
+    function ajax(url) {
+      const p = new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 400) {
+            if (xhr.status == 200) {
+              resolve(JSON.parse(xhr.responseText));
+            } else if (xhr.status == 404) {
+              reject(new Error("404 not found"));
+            }
+          }
+        };
+        xhr.send(null);
+      });
+      return p;
+    }
+
+    //test  这里 再使用 jq + jsonp 解除同源限制  非常nice
+    $.ajax({
+      url: "http://127.0.0.1:8081/13.test.josn.js",
+      dataType: "jsonp",
+      jsonpCallback: "callback",
+      success: function (data) {
+        console.log(data); // 可以拿到数据 {name: "xxxtest2"}
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+    // const url = "http://127.0.0.1:8081/13.test.josn.js";
+    // ajax(url)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log("err");
+    //   });
+  </script>
+</html>

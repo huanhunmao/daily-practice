@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input1" />
+  </body>
+  <script>
+    // 这一篇 是用来练习和复习的 多练习几遍  狠狠敲一下
+    function debounce(fn, delay = 500) {
+      var timer = null;
+      return function () {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          fn.apply(this, arguments);
+          timer = null;
+        }, 1000);
+      };
+    }
+
+    //test
+    var input1 = document.getElementById("input1");
+    input1.addEventListener(
+      "keyup",
+      debounce(function () {
+        console.log(input1.value);
+      }, 1000)
+    );
+  </script>
+</html>

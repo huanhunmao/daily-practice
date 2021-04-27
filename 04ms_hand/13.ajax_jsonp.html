@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  </head>
+  <body></body>
+
+  <script>
+    // 这段程序模拟的是 平时使用 jq 如何 实现jsonp 请求 跨域数据
+    // $.ajax({
+    //   url: "http://127.0.0.1:8081/13.test.josn.js", // 这个地方 先全局安装node --> http-server --> http-server -c-1  跑这个页面也会同步刷新
+    //   dataType: "jsonp",
+    //   jsonpCallback: "callback",
+    //   success: function (data) {
+    //     console.log(data);
+    //   },
+    //   error: function (error) {
+    //     console.log("error"); // 如果 打印 error  没有有效的url 地址
+    //   },
+    // });
+
+    $.ajax({
+      url: "http://127.0.0.1:8081/13.test.josn.js",
+      dataType: "jsonp",
+      jsonpCallback: "callback",
+      success: function (data) {
+        console.log(data);
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  </script>
+</html>

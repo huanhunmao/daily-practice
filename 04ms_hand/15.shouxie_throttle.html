@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" draggable="true"></div>
+  </body>
+
+  <script>
+    //   这个是没有做 节流处理的情况  每拖动到一个地方就会进行打印
+    //   性能 非常糟糕
+    // var box = document.getElementById("box");
+    // box.addEventListener("drag", function (e) {
+    //   console.log(e.offsetX, e.offsetY);
+    // });
+
+    // 下面是 throttle节流函数 不管 多么快的拖动 都间隔100ms运行一次
+    function throttle(fn, delay = 100) {
+      var timer = null;
+      return function () {
+        if (timer) {
+          return;
+        }
+        timer = setTimeout(() => {
+          fn.apply(this, arguments);
+          timer = null;
+        }, delay);
+      };
+    }
+
+    // test
+    var box = document.getElementById("box");
+    box.addEventListener(
+      "drag",
+      throttle(function (e) {
+        console.log(e.offsetX, e.offsetY);
+      }, 200)
+    );
+  </script>
+</html>

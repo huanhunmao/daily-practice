@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //此处演示 ajax 第二种 post 请求方式
+    // 需要 是网络请求的 json 数据 不然拿不到
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./login", true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          alert(xhr.responseText);
+        }
+      }
+    };
+
+    //test
+    const postData = {
+      username: "zhangsan",
+      password: "123",
+    };
+
+    xhr.send(postData);
+  </script>
+</html>

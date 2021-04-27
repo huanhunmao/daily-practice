@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //这里展示的是ajax get 请求部分
+    //实例化  XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "./data/test.json", true); // true表示 异步加载
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          alert(xhr.responseText);
+        } else {
+          console.log("其他情况");
+        }
+      }
+    };
+    xhr.send(null);
+  </script>
+</html>

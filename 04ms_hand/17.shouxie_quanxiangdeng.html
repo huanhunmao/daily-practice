@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 需求是写一个函数 判断两个对象只要看起来 相同 就输出 true(虽然两个完全相同的对象指向的是不同的地址)
+
+    // 先判断 是不是 对象
+    function isObject(obj) {
+      return typeof obj == "object" && obj != null;
+    }
+    function isEqual(obj1, obj2) {
+      // 值类型
+      if (!isObject(obj1) || !isObject(obj2)) {
+        return obj1 === obj2;
+      }
+
+      //两个直接相等的情况
+      if (obj1 == obj2) {
+        return true;
+      }
+
+      //   分别拿到两个对象的属性 以及属性 长度
+      const obj1Keys = Object.keys(obj1);
+      const obj2Keys = Object.keys(obj2);
+
+      //   对象长度都不一样 一定不相等
+      if (obj1Keys.length != obj2Keys.length) {
+        return false;
+      }
+
+      //   进行循环递归 判断
+      for (var key in obj1) {
+        const res = isEqual(obj1[key], obj2[key]);
+        if (!res) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // test
+    var obj1 = {
+      a: 1,
+      b: 2,
+    };
+
+    var obj2 = {
+      a: 1,
+      b: 2,
+    };
+
+    console.log(isEqual(obj1, obj2));
+  </script>
+</html>
