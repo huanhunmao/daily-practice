@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 新API方式 查找 location.search
+
+    function query(name) {
+      const search = location.search;
+      const p = new URLSearchParams(search);
+      return p.get(name);
+    }
+
+    // 网页 用这个测试的 http://127.0.0.1:8081/21.location_search.html?a=10&b=20&c=30
+    console.log(query("c")); // c
+    console.log(query("a")); // 10
+    console.log(query("b")); // 20
+    console.log(location.host); //127.0.0.1:8081
+  </script>
+</html>
