@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 这一篇将要展示 事件委托 先展示ul里面放很多 li的演示 -->
+    <!-- 事件委托指的是 将事件监听绑定在父元素上  然后可以监听是哪个子元素触发事件冒泡到父元素上 -->
+    <!-- 这个是通过监听 e.target是被点击的元素-->
+    <!-- e.target && e.target.nodeName == "LI" -->
+    <ul id="parent-list">
+      <li id="post-1">Item 1</li>
+      <li id="post-2">Item 2</li>
+      <li id="post-3">Item 3</li>
+      <li id="post-4">Item 4</li>
+      <li id="post-5">Item 5</li>
+      <li id="post-6">Item 6</li>
+    </ul>
+  </body>
+  <script>
+    // 找到父元素，添加监听器...
+    document
+      .getElementById("parent-list")
+      .addEventListener("click", function (e) {
+        // e.target是被点击的元素!
+        // 如果被点击的是li元素
+        if (e.target && e.target.nodeName == "LI") {
+          // 找到目标，输出ID!
+          console.log(
+            "List item ",
+            e.target.id.replace("post-"),
+            " was clicked!"
+          );
+        }
+      });
+  </script>
+</html>

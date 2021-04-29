@@ -1,0 +1,49 @@
+<script type="text/javascript" src="jquery.min.js"></script>
+<style>
+  .menu {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  .menu li {
+    background: #ffd1a4;
+    margin-right: 1px;
+    float: left;
+    color: #fff;
+  }
+  .menu li a {
+    display: block;
+    width: 80px;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .cur {
+    background: #d96c00;
+    font-weight: bold;
+  }
+</style>
+
+<ul class="menu" id="menu">
+  <li><a href="a.html">首页</a></li>
+  <li><a href="b.html">SEO优化</a></li>
+  <li><a href="c.html">生活娱乐</a></li>
+</ul>
+
+<script type="text/javascript">
+  var urlstr = location.href;
+  //alert((urlstr + "/").indexOf($(this).attr("href")));
+  var urlstatus=false;
+  $("#menu a").each(function () {
+  if ((urlstr + "/").indexOf($(this).attr("href")) > -1&&$(this).attr("href")!=”) {
+  $(this).addClass("cur"); urlstatus = true;
+  } else {
+  $(this).removeClass("cur");
+  }
+  });
+  if (!urlstatus) {$("#menu a").eq(0).addClass("cur"); }
+</script>

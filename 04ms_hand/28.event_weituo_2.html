@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myDiv">
+      <a href="#" id="aa">111</a>
+      <p id="ic">222</p>
+
+      <a id="A" href="#" class="A">444 </a>
+
+      <a id="classA" class="classA">333</a>
+    </div>
+  </body>
+  <script>
+    // 获得父元素DIV, 添加监听器...
+    document.getElementById("myDiv").addEventListener("click", function (e) {
+      // e.target是被点击的元素
+      if (e.target && e.target.nodeName == "A") {
+        // 获得CSS类名  split 方法将 字符串 ---> 数组
+        var classes = e.target.className.split(" ");
+        // 搜索匹配!
+        if (classes) {
+          // For every CSS class the element has...
+          for (var x = 0; x < classes.length; x++) {
+            // If it has the CSS class we want...
+            if (classes[x] == "classA") {
+              // Bingo!
+              console.log("right classA is clicked!");
+
+              // Now do something here....
+            }
+          }
+        }
+      }
+    });
+  </script>
+</html>
