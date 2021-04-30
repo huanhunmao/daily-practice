@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 第一个响应式原理的例子 用来说明响应式基本使用
+    // 在对象中添加一个属性与存取描述符的示例
+    var bValue;
+    var o = {};
+    Object.defineProperty(o, "b", {
+      get: function () {
+        console.log("监听正在获取b");
+        return bValue;
+      },
+      set: function (newValue) {
+        console.log("监听正在设置b");
+        bValue = newValue;
+      },
+      //可枚举的
+      enumerable: true,
+      //可配置的
+      configurable: true,
+    });
+
+    o.b = 38;
+    console.log(o.b);
+
+    // 打印结果
+    // 监听正在设置b
+    // 监听正在获取b
+    //38
+  </script>
+</html>

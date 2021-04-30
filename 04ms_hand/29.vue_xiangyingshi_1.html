@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="txt" />
+    <span id="sp"></span>
+  </body>
+
+  <script>
+    // 弄懂响应式原理第二步  实现一个极简的VUE双向绑定了
+    // VUE给data里所有的属性加上set,get这个过程就叫做Reactive化
+    // 这里练习的是响应式原理第二步
+    // 1、拿到 dom节点
+    var inp = document.getElementById("inp"),
+      sp = document.getElementById("sp"),
+      obj = {};
+
+    // 2、使用 API
+    // 给对象obj添加msg属性，并设置setter访问器
+    // 设置 obj.msg  当obj.msg反生改变时set方法将会被调用
+    Object.defineProperty(obj, "msg", {
+      set: function (newValue) {
+        // 当obj.msg被赋值时 同时设置给 input/span
+        inp.value = newValue;
+        sp.innerText = newValue;
+      },
+    });
+
+    // 3、监听
+    inp.addEventListener("keyup", function (e) {
+      obj.msg = e.target.value;
+    });
+  </script>
+</html>

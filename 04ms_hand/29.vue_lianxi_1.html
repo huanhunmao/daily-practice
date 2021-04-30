@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="inp" />
+    <span id="sp"></span>
+  </body>
+  <script>
+    // 这里练习的是响应式原理第二步
+    // 1、拿到 dom节点
+    var inp = document.getElementById("inp"),
+      sp = document.getElementById("sp"),
+      obj = {};
+
+    // 2、使用 API
+    Object.defineProperty(obj, "msg", {
+      set: function (newValue) {
+        inp.value = newValue;
+        sp.innerText = newValue;
+      },
+    });
+
+    // 3、监听
+    inp.addEventListener("keyup", function (e) {
+      obj.msg = e.target.value;
+    });
+  </script>
+</html>

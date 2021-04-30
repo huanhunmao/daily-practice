@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var bValue,
+      obj = {};
+    Object.defineProperty(obj, "msg", {
+      set: function (newValue) {
+        console.log("监听正在设置msg");
+        bValue = newValue;
+      },
+      get: function () {
+        console.log("监听正在获取msg");
+        return bValue;
+      },
+    });
+
+    // test
+    obj.msg = 666;
+    console.log(obj.msg);
+  </script>
+</html>
