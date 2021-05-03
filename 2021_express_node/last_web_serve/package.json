@@ -1,0 +1,15 @@
+{
+  "name": "last_web_serve",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6"
+  }
+}
